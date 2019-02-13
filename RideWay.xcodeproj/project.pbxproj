@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		292BB279261F137092726796 /* Pods_RideWay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B09FC34A199458AED77E829 /* Pods_RideWay.framework */; };
+		4100D62222138BB400B88176 /* PreRideChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4100D62122138BB400B88176 /* PreRideChecklist.swift */; };
+		4100D6242213917900B88176 /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4100D6232213917900B88176 /* Maintenance.swift */; };
+		4100D6262213931100B88176 /* Rides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4100D6252213931100B88176 /* Rides.swift */; };
+		410ECD3D2213334D008C244A /* FirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410ECD3C2213334D008C244A /* FirebaseObject.swift */; };
+		416BC7A1220DF393006E8C16 /* VehicleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BC7A0220DF393006E8C16 /* VehicleInfo.swift */; };
+		416BC7A4220DF7BB006E8C16 /* VehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BC7A3220DF7BB006E8C16 /* VehicleController.swift */; };
+		417219612211F3D700B2F839 /* BikeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417219602211F3D700B2F839 /* BikeListTableViewController.swift */; };
+		41C9F27022121B410059E479 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C9F26F22121B410059E479 /* FirebaseController.swift */; };
 		41F060DF220CAF1E009EF525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F060DE220CAF1E009EF525 /* AppDelegate.swift */; };
 		41F060E1220CAF1E009EF525 /* LogRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F060E0220CAF1E009EF525 /* LogRegViewController.swift */; };
 		41F060E4220CAF1E009EF525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41F060E2220CAF1E009EF525 /* Main.storyboard */; };
@@ -19,6 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4100D62122138BB400B88176 /* PreRideChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRideChecklist.swift; sourceTree = "<group>"; };
+		4100D6232213917900B88176 /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
+		4100D6252213931100B88176 /* Rides.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rides.swift; sourceTree = "<group>"; };
+		410ECD3C2213334D008C244A /* FirebaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseObject.swift; sourceTree = "<group>"; };
+		416BC7A0220DF393006E8C16 /* VehicleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleInfo.swift; sourceTree = "<group>"; };
+		416BC7A3220DF7BB006E8C16 /* VehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleController.swift; sourceTree = "<group>"; };
+		417219602211F3D700B2F839 /* BikeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeListTableViewController.swift; sourceTree = "<group>"; };
+		41C9F26F22121B410059E479 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		41F060DB220CAF1E009EF525 /* RideWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F060DE220CAF1E009EF525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41F060E0220CAF1E009EF525 /* LogRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRegViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +62,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		416BC79F220DF360006E8C16 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				416BC7A0220DF393006E8C16 /* VehicleInfo.swift */,
+				410ECD3C2213334D008C244A /* FirebaseObject.swift */,
+				4100D62122138BB400B88176 /* PreRideChecklist.swift */,
+				4100D6232213917900B88176 /* Maintenance.swift */,
+				4100D6252213931100B88176 /* Rides.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		416BC7A2220DF750006E8C16 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				417219602211F3D700B2F839 /* BikeListTableViewController.swift */,
+				416BC7A3220DF7BB006E8C16 /* VehicleController.swift */,
+				41C9F26F22121B410059E479 /* FirebaseController.swift */,
+				41F060F6220D0BD6009EF525 /* NewVehicleViewController.swift */,
+				41F060E0220CAF1E009EF525 /* LogRegViewController.swift */,
+				41F060F2220CDE0A009EF525 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		41F060D2220CAF1D009EF525 = {
 			isa = PBXGroup;
 			children = (
@@ -68,11 +109,10 @@
 		41F060DD220CAF1E009EF525 /* RideWay */ = {
 			isa = PBXGroup;
 			children = (
+				416BC7A2220DF750006E8C16 /* Controllers */,
+				416BC79F220DF360006E8C16 /* Models */,
 				41F060DE220CAF1E009EF525 /* AppDelegate.swift */,
-				41F060E0220CAF1E009EF525 /* LogRegViewController.swift */,
-				41F060F6220D0BD6009EF525 /* NewVehicleViewController.swift */,
 				41F060E2220CAF1E009EF525 /* Main.storyboard */,
-				41F060F2220CDE0A009EF525 /* HomeViewController.swift */,
 				41F060E5220CAF21009EF525 /* Assets.xcassets */,
 				41F060E7220CAF21009EF525 /* LaunchScreen.storyboard */,
 				41F060EA220CAF21009EF525 /* Info.plist */,
@@ -176,8 +216,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RideWay/Pods-RideWay-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -185,8 +229,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -224,8 +272,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4100D62222138BB400B88176 /* PreRideChecklist.swift in Sources */,
+				41C9F27022121B410059E479 /* FirebaseController.swift in Sources */,
+				416BC7A4220DF7BB006E8C16 /* VehicleController.swift in Sources */,
 				41F060E1220CAF1E009EF525 /* LogRegViewController.swift in Sources */,
+				416BC7A1220DF393006E8C16 /* VehicleInfo.swift in Sources */,
+				4100D6262213931100B88176 /* Rides.swift in Sources */,
+				417219612211F3D700B2F839 /* BikeListTableViewController.swift in Sources */,
+				410ECD3D2213334D008C244A /* FirebaseObject.swift in Sources */,
 				41F060DF220CAF1E009EF525 /* AppDelegate.swift in Sources */,
+				4100D6242213917900B88176 /* Maintenance.swift in Sources */,
 				41F060F7220D0BD6009EF525 /* NewVehicleViewController.swift in Sources */,
 				41F060F3220CDE0A009EF525 /* HomeViewController.swift in Sources */,
 			);
