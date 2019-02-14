@@ -33,14 +33,6 @@ class BikeListTableViewController: UITableViewController {
             self.dataSource = vehicles
             self.tableView.reloadData()
         }
-    
-//        FirebaseController.shared.fetchVehiclesFromFirebase(firebaseObject: <#T#>) { (vehicles) in
-//            print(vehicles)
-//            if !vehicles.isEmpty {
-//                self.dataSource = vehicles
-//            }
-//            self.tableView.reloadData()
-//        }
     }
     
     // MARK: - Table view data source
@@ -55,8 +47,11 @@ class BikeListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bikeCell", for: indexPath)
-        let vin = dataSource?[indexPath.row].vin
-        cell.textLabel?.text = vin
+        guard let year = dataSource?[indexPath.row].year,
+            let make = dataSource?[indexPath.row].make,
+            let model = dataSource?[indexPath.row].model else { return UITableViewCell() }
+        let bike = "\(year) \(make) \(model)"
+        cell.textLabel?.text = bike
         return cell
     }
 

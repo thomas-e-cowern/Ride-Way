@@ -13,14 +13,18 @@ class FirebaseController {
     
     static let shared = FirebaseController()
     
+    let userId = Auth.auth().currentUser?.uid
+    
     let docRef = Firestore.firestore()
     
+    // MARK: - Motorcycles
     func saveToDatabase(vehicleInfo: VehicleInfo, completion: @escaping (VehicleInfo?) -> Void) {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            print("Problem getting userId in saveToDatabase")
-            return
-        }
-        print("💬💬💬💬💬\(vehicleInfo)💬💬💬💬💬")
+//        guard let userId = Auth.auth().currentUser?.uid else {
+//            print("Problem getting userId in saveToDatabase")
+//            return
+//        }
+//        print("💬💬💬💬💬\(vehicleInfo)💬💬💬💬💬")
+        guard let userId = userId else { return }
         vehicleInfo.userId = userId
         let dbref = docRef.collection("bikes").document()
         let uid = dbref.documentID
@@ -123,4 +127,35 @@ class FirebaseController {
 //        let dbref = docRef.collection("bikes").document(documentId)
 //        dbref.updateData(<#T##fields: [AnyHashable : Any]##[AnyHashable : Any]#>)
 //    }
+    
+    // MARK: - Maintenance
+    func saveMaintenenaceRecord(for maintenanceRecord: Maintenance, completion: @escaping (Maintenance?) -> Void) {
+        let dbref = docRef.collection("maintenance").document()
+        dbref.setData(maintenanceRecord.dictionary) { err in
+            if let err = err {
+                print("Error writing document: \(err)"); completion(nil); return
+            } else {
+                completion(maintenanceRecord)
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func fetchMaintenenanceRecordsFor(completion: @escaping ([Maintenance]?) -> Void) {
+        guard let userId = userId else { return }
+        let collection = docRef.collection("maintenance")
+        let query = collection.whereField("user", isEqualTo: userId)
+        query.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("😡 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)")
+                completion([])
+            }
+            if let snapshot = querySnapshot {
+                print(snapshot)
+                let data = snapshot.documents.compactMap { Maintenance(dictionary: $0.data()) }
+                print(data)
+                completion(data)
+            }
+        }
+    }
 }

@@ -32,6 +32,17 @@ class Maintenance {
             MaintenanceConstants.motorcycleKey: motorcycle
         ]
     }
+    
+    required convenience init?(dictionary: [String : Any]) {
+        guard let date = dictionary[MaintenanceConstants.dateKey] as? Date,
+            let location = dictionary[MaintenanceConstants.locationKey] as? String,
+            let servicePerformed = dictionary[MaintenanceConstants.servicePerformedKey] as? String,
+            let miles = dictionary[MaintenanceConstants.milesKey] as? Double,
+            let motorcycle = dictionary[MaintenanceConstants.motorcycleKey] as? String
+            else { return nil }
+        
+        self.init(date: date, location: location, servicePerformed: servicePerformed, miles: miles, motorcycle: motorcycle)
+    }
 }
 
 class MaintenanceConstants {
