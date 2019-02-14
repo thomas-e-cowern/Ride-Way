@@ -23,9 +23,6 @@ class MaintenanceDetailViewController: UIViewController, UIPickerViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         maintenanceBikePicker.delegate = self
-//        let userId = FirebaseController.shared.userId
-//        print("Maintenance Controller userId: \(userId)")
-//        bikes = ["Bike 1", "Bike 2", "Bike 3", "Bike 4"]
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -57,7 +54,7 @@ class MaintenanceDetailViewController: UIViewController, UIPickerViewDataSource,
             let servicePerformed = maintenenceServicePerformedTextfield.text else { return }
         
         MaintenanceController.shared.saveNewMaintenanceRecord(date: date, location: location, servicePerformed: servicePerformed, miles: miles, motorcycleId: bike) { (maintenenceRecord) in
-            print("Maintenece Record saved: \(maintenenceRecord)")
+//            print("Maintenece Record saved: \(maintenenceRecord)")
         }
     }
     

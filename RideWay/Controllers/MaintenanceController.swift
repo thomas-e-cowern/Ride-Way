@@ -11,13 +11,26 @@ import Foundation
 class MaintenanceController {
     
     static let shared = MaintenanceController()
+    
+    let userId = FirebaseController.shared.userId
 
     func saveNewMaintenanceRecord(date: Date, location: String, servicePerformed: String, miles: Double, motorcycleId: String, completion: @escaping (Maintenance?) -> Void) {
-        let maintenanceRecord = Maintenance(date: date, location: location, servicePerformed: servicePerformed, miles: miles, motorcycle: motorcycleId)
+        guard let userId = userId else { return }
+        let maintenanceRecord = Maintenance(date: date, location: location, servicePerformed: servicePerformed, miles: miles, motorcycle: motorcycleId, user: userId)
         FirebaseController.shared.saveMaintenenaceRecord(for: maintenanceRecord, completion: completion)
     }
     
     func fetchMaintenanceRecords(completion: @escaping ([Maintenance]?) -> Void) {
         FirebaseController.shared.fetchMaintenenanceRecordsFor(completion: completion)
+    }
+    
+    func deleteMaintenance(record: Maintenance, completion: @escaping (Bool) -> Void) {
+        FirebaseController.shared.deleteMaintenenanceRecordsFor(maintenanceRecord: record) { (success) in
+            if success == true {
+                print("deleted maintenancdRecord")
+            } else {
+                print("problem deleting maintenancdRecord")
+            }
+        }
     }
 }

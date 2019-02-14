@@ -18,6 +18,11 @@ class MaitenenaceTableViewController: UITableViewController {
         getVehicleList()
         getMaintenanceList()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 
     func getVehicleList() {
         VehicleController.shared.fetchVehicles { (vehicles) in
@@ -29,12 +34,12 @@ class MaitenenaceTableViewController: UITableViewController {
     func getMaintenanceList () {
         MaintenanceController.shared.fetchMaintenanceRecords { (maintenence) in
             self.maintenanceRecords = maintenence
+//            print("👻 MR:\(self.maintenanceRecords)")
             self.tableView.reloadData()
         }
     }
     
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -48,8 +53,10 @@ class MaitenenaceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "maintenanceCell", for: indexPath)
-        let maintenanceRecord = maintenanceRecords?[indexPath.row].date
-        cell.textLabel?.text = "Service performed on: \(maintenanceRecord)"
+        guard let servicePerformed = maintenanceRecords?[indexPath.row].servicePerformed,
+            let datePerformed = maintenanceRecords?[indexPath.row].date else { return UITableViewCell() }
+        let maintenanceSummary = "\(servicePerformed) \(datePerformed.asPrettyString)"
+        cell.textLabel?.text = maintenanceSummary
         return cell
     }
     
@@ -62,17 +69,29 @@ class MaitenenaceTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            guard let maintenanceRecords = maintenanceRecords?[indexPath.row] else {
+                print("Error in maintenance delete")
+                return
+            }
+            
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            MaintenanceController.shared.deleteMaintenance(record: maintenanceRecords) { (success) in
+                if success == true {
+                    print("deleted data")
+                    self.dataSource?.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                } else {
+                    print("problem deleting data")
+                }
+            }
+        } 
     }
-    */
+ 
 
     /*
     // Override to support rearranging the table view.

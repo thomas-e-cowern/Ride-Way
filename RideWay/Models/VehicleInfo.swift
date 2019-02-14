@@ -105,7 +105,7 @@ class VehicleInfo: FirebaseObject {
 //        self.uid = uid
 //
         
-        self.init(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin)
+        self.init(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, uid: uid)
     }
     
     enum CodingKeys: String, CodingKey {

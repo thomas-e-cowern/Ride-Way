@@ -15,6 +15,7 @@
 		416BC7A1220DF393006E8C16 /* VehicleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BC7A0220DF393006E8C16 /* VehicleInfo.swift */; };
 		416BC7A4220DF7BB006E8C16 /* VehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BC7A3220DF7BB006E8C16 /* VehicleController.swift */; };
 		417219612211F3D700B2F839 /* BikeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417219602211F3D700B2F839 /* BikeListTableViewController.swift */; };
+		41A7F9B02215D606001F7B06 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A7F9AF2215D606001F7B06 /* DateExtension.swift */; };
 		41B75C0E2214AAFE003D8134 /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B75C0D2214AAFD003D8134 /* ChecklistTableViewController.swift */; };
 		41B75C102214B464003D8134 /* MaitenenaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B75C0F2214B464003D8134 /* MaitenenaceTableViewController.swift */; };
 		41B75C122214B4BA003D8134 /* MaintenanceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B75C112214B4BA003D8134 /* MaintenanceDetailViewController.swift */; };
@@ -40,6 +41,7 @@
 		416BC7A0220DF393006E8C16 /* VehicleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleInfo.swift; sourceTree = "<group>"; };
 		416BC7A3220DF7BB006E8C16 /* VehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleController.swift; sourceTree = "<group>"; };
 		417219602211F3D700B2F839 /* BikeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeListTableViewController.swift; sourceTree = "<group>"; };
+		41A7F9AF2215D606001F7B06 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = RideWay/DateExtension.swift; sourceTree = SOURCE_ROOT; };
 		41B75C0D2214AAFD003D8134 /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
 		41B75C0F2214B464003D8134 /* MaitenenaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaitenenaceTableViewController.swift; sourceTree = "<group>"; };
 		41B75C112214B4BA003D8134 /* MaintenanceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceDetailViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				416BC7A2220DF750006E8C16 /* Controllers */,
 				416BC79F220DF360006E8C16 /* Models */,
 				41F060DE220CAF1E009EF525 /* AppDelegate.swift */,
+				41A7F9AF2215D606001F7B06 /* DateExtension.swift */,
 				41F060E2220CAF1E009EF525 /* Main.storyboard */,
 				41F060E5220CAF21009EF525 /* Assets.xcassets */,
 				41F060E7220CAF21009EF525 /* LaunchScreen.storyboard */,
@@ -303,6 +306,7 @@
 				41B75C192214D8F4003D8134 /* Documentation.swift in Sources */,
 				416BC7A4220DF7BB006E8C16 /* VehicleController.swift in Sources */,
 				41B75C172214D8D5003D8134 /* Parts.swift in Sources */,
+				41A7F9B02215D606001F7B06 /* DateExtension.swift in Sources */,
 				41F060E1220CAF1E009EF525 /* LogRegViewController.swift in Sources */,
 				416BC7A1220DF393006E8C16 /* VehicleInfo.swift in Sources */,
 				4100D6262213931100B88176 /* Rides.swift in Sources */,

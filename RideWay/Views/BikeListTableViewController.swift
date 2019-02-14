@@ -72,7 +72,7 @@ class BikeListTableViewController: UITableViewController {
             }
             
             // Delete the row from the data source
-            FirebaseController.shared.deleteVehicleFromFirebase(vehicle: vehicle) { (success) in
+            VehicleController.shared.deleteMotorcycle(motorcycle: vehicle) { (success) in
                 if success == true {
                     print("deleted data")
                     self.dataSource?.remove(at: indexPath.row)

@@ -23,6 +23,16 @@ class VehicleController {
         FirebaseController.shared.fetchVehiclesFromFirebaseFor(completion: completion)
     }
     
+    func deleteMotorcycle(motorcycle: VehicleInfo, completion: @escaping (Bool) -> Void) {
+        FirebaseController.shared.deleteVehicleFromFirebase(vehicle: motorcycle) { (success) in
+            if success == true {
+                print("deleted Motorcycle")
+            } else {
+                print("problem deleting motorcycle")
+            }
+        }
+    }
+    
     func fetchVinResults(with userVin: String, completion: @escaping (VehicleInfo?) -> Void) {
         // reference complete url: "https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvaluesextended/5UXWX7C5*BA?format=json"
         // base url

@@ -146,15 +146,23 @@ class FirebaseController {
         let collection = docRef.collection("maintenance")
         let query = collection.whereField("user", isEqualTo: userId)
         query.getDocuments { (querySnapshot, error) in
+            if let error = error {print("😡 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)"); completion([])}
+            if let snapshot = querySnapshot {let data = snapshot.documents.compactMap { Maintenance(dictionary: $0.data()) }; completion(data)}
+        }
+    }
+    
+    func deleteMaintenenanceRecordsFor(maintenanceRecord: Maintenance, completion: @escaping (Bool) -> Void) {
+        let dbref = docRef.collection("maintenance").document(maintenanceRecord.maintenanceId)
+        print("Firebase MaintId: \(maintenanceRecord.maintenanceId)")
+        dbref.delete{ (error) in
             if let error = error {
-                print("😡 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)")
-                completion([])
-            }
-            if let snapshot = querySnapshot {
-                print(snapshot)
-                let data = snapshot.documents.compactMap { Maintenance(dictionary: $0.data()) }
-                print(data)
-                completion(data)
+                print(">>> ❌ There was an error in \(#file): \(#line): \(error) \(error.localizedDescription) <<<")
+                completion(false)
+                return
+            } else {
+                print("Firebase should have deleted this maintenance record: \(maintenanceRecord.maintenanceId)")
+                completion(true)
+                return
             }
         }
     }
