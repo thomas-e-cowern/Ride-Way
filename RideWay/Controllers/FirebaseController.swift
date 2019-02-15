@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class FirebaseController {
     
@@ -194,6 +195,21 @@ class FirebaseController {
                 print("Firebase should have deleted this maintenance record: \(part.partId)")
                 completion(true)
                 return
+            }
+        }
+    }
+    
+    func uploadImageToFirebaseStorage(data: NSData, name: String, bike: String, user: String) {
+        print("attempting to upload an image")
+        print(name)
+        let storageRef = Storage.storage().reference().child("\(user)/\(bike)").child("\(name).jpg")
+        let uploadMetaData = StorageMetadata()
+        uploadMetaData.contentType = "image/jpg"
+        storageRef.putData(data as Data, metadata: uploadMetaData) { (metadata, error) in
+            if (error != nil) {
+                print("recieved an error: \(String(describing: error?.localizedDescription))")
+            } else {
+                print("upload complete! \(String(describing: metadata))")
             }
         }
     }

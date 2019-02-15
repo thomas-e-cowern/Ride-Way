@@ -15,6 +15,9 @@
 		410ABBBE2216432C0058898B /* PartsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410ABBBD2216432C0058898B /* PartsDetailViewController.swift */; };
 		410ABBC02216434B0058898B /* PartsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410ABBBF2216434B0058898B /* PartsListTableViewController.swift */; };
 		410ECD3D2213334D008C244A /* FirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410ECD3C2213334D008C244A /* FirebaseObject.swift */; };
+		41611E4622171730003B73F4 /* DocumentListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41611E4522171730003B73F4 /* DocumentListTableViewController.swift */; };
+		41611E482217174F003B73F4 /* DocumentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41611E472217174F003B73F4 /* DocumentDetailViewController.swift */; };
+		41611E4A221720B5003B73F4 /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41611E49221720B5003B73F4 /* DocumentController.swift */; };
 		416BC7A1220DF393006E8C16 /* VehicleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BC7A0220DF393006E8C16 /* VehicleInfo.swift */; };
 		416BC7A4220DF7BB006E8C16 /* VehicleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416BC7A3220DF7BB006E8C16 /* VehicleController.swift */; };
 		417219612211F3D700B2F839 /* BikeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417219602211F3D700B2F839 /* BikeListTableViewController.swift */; };
@@ -47,6 +50,9 @@
 		410ABBBD2216432C0058898B /* PartsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsDetailViewController.swift; sourceTree = "<group>"; };
 		410ABBBF2216434B0058898B /* PartsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsListTableViewController.swift; sourceTree = "<group>"; };
 		410ECD3C2213334D008C244A /* FirebaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseObject.swift; sourceTree = "<group>"; };
+		41611E4522171730003B73F4 /* DocumentListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListTableViewController.swift; sourceTree = "<group>"; };
+		41611E472217174F003B73F4 /* DocumentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetailViewController.swift; sourceTree = "<group>"; };
+		41611E49221720B5003B73F4 /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
 		416BC7A0220DF393006E8C16 /* VehicleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleInfo.swift; sourceTree = "<group>"; };
 		416BC7A3220DF7BB006E8C16 /* VehicleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleController.swift; sourceTree = "<group>"; };
 		417219602211F3D700B2F839 /* BikeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeListTableViewController.swift; sourceTree = "<group>"; };
@@ -105,11 +111,12 @@
 		416BC7A2220DF750006E8C16 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				41611E49221720B5003B73F4 /* DocumentController.swift */,
 				41B75C142214B5AD003D8134 /* MaintenanceController.swift */,
 				416BC7A3220DF7BB006E8C16 /* VehicleController.swift */,
-				41C9F26F22121B410059E479 /* FirebaseController.swift */,
 				4198BF7022160E3000176B35 /* RidesController.swift */,
 				410ABBBB22163D9F0058898B /* PartsController.swift */,
+				41C9F26F22121B410059E479 /* FirebaseController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +124,8 @@
 		41B75C132214B4D1003D8134 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				41611E472217174F003B73F4 /* DocumentDetailViewController.swift */,
+				41611E4522171730003B73F4 /* DocumentListTableViewController.swift */,
 				410ABBBD2216432C0058898B /* PartsDetailViewController.swift */,
 				410ABBBF2216434B0058898B /* PartsListTableViewController.swift */,
 				4198BF742216115400176B35 /* RideDetailViewController.swift */,
@@ -321,12 +330,14 @@
 			files = (
 				410ABBBC22163D9F0058898B /* PartsController.swift in Sources */,
 				4198BF732216112B00176B35 /* RideListTableViewController.swift in Sources */,
+				41611E4A221720B5003B73F4 /* DocumentController.swift in Sources */,
 				4100D62222138BB400B88176 /* PreRideChecklist.swift in Sources */,
 				410ABBC02216434B0058898B /* PartsListTableViewController.swift in Sources */,
 				41C9F27022121B410059E479 /* FirebaseController.swift in Sources */,
 				41B75C192214D8F4003D8134 /* Documentation.swift in Sources */,
 				4198BF7122160E3000176B35 /* RidesController.swift in Sources */,
 				416BC7A4220DF7BB006E8C16 /* VehicleController.swift in Sources */,
+				41611E482217174F003B73F4 /* DocumentDetailViewController.swift in Sources */,
 				41B75C172214D8D5003D8134 /* Parts.swift in Sources */,
 				41A7F9B02215D606001F7B06 /* DateExtension.swift in Sources */,
 				41F060E1220CAF1E009EF525 /* LogRegViewController.swift in Sources */,
@@ -339,6 +350,7 @@
 				41F060DF220CAF1E009EF525 /* AppDelegate.swift in Sources */,
 				4100D6242213917900B88176 /* Maintenance.swift in Sources */,
 				41F060F7220D0BD6009EF525 /* NewVehicleViewController.swift in Sources */,
+				41611E4622171730003B73F4 /* DocumentListTableViewController.swift in Sources */,
 				41B75C152214B5AD003D8134 /* MaintenanceController.swift in Sources */,
 				4198BF752216115400176B35 /* RideDetailViewController.swift in Sources */,
 				41F060F3220CDE0A009EF525 /* HomeViewController.swift in Sources */,
