@@ -27,8 +27,10 @@ class VehicleController {
         FirebaseController.shared.deleteVehicleFromFirebase(vehicle: motorcycle) { (success) in
             if success == true {
                 print("deleted Motorcycle")
+                completion(true)
             } else {
                 print("problem deleting motorcycle")
+                completion(false)
             }
         }
     }

@@ -1,50 +1,28 @@
 //
-//  MaitenenaceTableViewController.swift
+//  RideListTableViewController.swift
 //  RideWay
 //
-//  Created by Thomas Cowern New on 2/13/19.
+//  Created by Thomas Cowern New on 2/14/19.
 //  Copyright © 2019 Thomas Cowern New. All rights reserved.
 //
 
 import UIKit
 
-class MaitenenaceTableViewController: UITableViewController {
-    
-    var dataSource: [VehicleInfo]?
-    var maintenanceRecords: [Maintenance]?
+class RideListTableViewController: UITableViewController {
 
+    var rides: [Rides]?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getVehicleList()
-        getMaintenanceList()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getMaintenanceList()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        getMaintenanceList()
+        RidesController.shared.fetchRides { (returnedRides) in
+            self.rides = returnedRides
+            self.tableView.reloadData()
+        }
     }
 
-    func getVehicleList() {
-        VehicleController.shared.fetchVehicles { (vehicles) in
-            self.dataSource = vehicles
-            self.tableView.reloadData()
-        }
-    }
-    
-    func getMaintenanceList () {
-        MaintenanceController.shared.fetchMaintenanceRecords { (maintenence) in
-            self.maintenanceRecords = maintenence
-//            print("👻 MR:\(self.maintenanceRecords)")
-            self.tableView.reloadData()
-        }
-    }
-    
     // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -52,16 +30,17 @@ class MaitenenaceTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return maintenanceRecords?.count ?? 0
+        return rides?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "maintenanceCell", for: indexPath)
-        guard let servicePerformed = maintenanceRecords?[indexPath.row].servicePerformed,
-            let datePerformed = maintenanceRecords?[indexPath.row].date else { return UITableViewCell() }
-        let maintenanceSummary = "\(servicePerformed) \(datePerformed.asPrettyString)"
-        cell.textLabel?.text = maintenanceSummary
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rideCell", for: indexPath)
+        let ride = rides?[indexPath.row]
+        guard let startDate = ride?.startDate.asPrettyString,
+            let notes = ride?.notes else { return UITableViewCell() }
+        let rideInfo = "\(startDate) : \(notes)"
+        cell.textLabel?.text = rideInfo
         return cell
     }
     
@@ -78,27 +57,24 @@ class MaitenenaceTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-            guard let maintenanceRecords = maintenanceRecords?[indexPath.row] else {
-                print("Error in maintenance delete")
+            guard let rideToDelete = rides?[indexPath.row] else {
+                print("Error in ride delete")
                 return
             }
             
             // Delete the row from the data source
-            MaintenanceController.shared.deleteMaintenance(record: maintenanceRecords) { (success) in
+            RidesController.shared.deleteRide(ride: rideToDelete) { (success) in
                 if success == true {
                     print("deleted data")
-                    self.maintenanceRecords?.remove(at: indexPath.row)
+                    self.rides?.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .automatic)
-
+                    
                 } else {
                     print("problem deleting data")
                 }
-                
             }
         } 
     }
- 
 
     /*
     // Override to support rearranging the table view.
@@ -115,13 +91,14 @@ class MaitenenaceTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMaintenanceDetail" {
-            if let destinationViewController = segue.destination as? MaintenanceDetailViewController {
-                destinationViewController.bikes = dataSource
-            }
-        }
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
+    */
+
 }

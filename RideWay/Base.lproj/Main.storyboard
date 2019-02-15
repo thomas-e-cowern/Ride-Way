@@ -167,7 +167,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Documentation"/>
                                 <connections>
-                                    <segue destination="cww-GA-6td" kind="show" id="KEC-kl-C6D"/>
+                                    <segue destination="cww-GA-6td" kind="show" identifier="toPartsDetail" id="KEC-kl-C6D"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="3358" y="-199"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Ride List Table View Controller-->
         <scene sceneID="1y5-CT-fpr">
             <objects>
-                <tableViewController id="YN4-Q5-RbE" sceneMemberID="viewController">
+                <tableViewController id="YN4-Q5-RbE" customClass="RideListTableViewController" customModule="RideWay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="spc-Yb-oNO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -418,7 +418,7 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="t4j-tc-pxQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="rideCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rideCell" id="t4j-tc-pxQ">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t4j-tc-pxQ" id="G1o-d4-jdX">
@@ -440,10 +440,10 @@
             </objects>
             <point key="canvasLocation" x="2546" y="489"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Parts List Table View Controller-->
         <scene sceneID="9Gk-Y7-auQ">
             <objects>
-                <tableViewController id="v6h-aG-8Ri" sceneMemberID="viewController">
+                <tableViewController id="v6h-aG-8Ri" customClass="PartsListTableViewController" customModule="RideWay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3g1-fm-ded">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,14 +455,14 @@
                                 <navigationItem title="Parts" id="ZXY-ak-3Nr">
                                     <barButtonItem key="rightBarButtonItem" systemItem="add" id="LjO-09-QUj">
                                         <connections>
-                                            <segue destination="cVz-ZO-T52" kind="show" id="6B1-oL-k97"/>
+                                            <segue destination="cVz-ZO-T52" kind="show" identifier="toPartsDetail" id="6B1-oL-k97"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iZN-59-NNX">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="partsCell" id="iZN-59-NNX">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZN-59-NNX" id="naG-iF-Rjy">
@@ -481,10 +481,10 @@
             </objects>
             <point key="canvasLocation" x="2541" y="1192"/>
         </scene>
-        <!--View Controller-->
+        <!--Parts Detail View Controller-->
         <scene sceneID="FyA-zi-KcS">
             <objects>
-                <viewController id="cVz-ZO-T52" sceneMemberID="viewController">
+                <viewController id="cVz-ZO-T52" customClass="PartsDetailViewController" customModule="RideWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUZ-hz-gA7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -567,6 +567,9 @@
                                 <rect key="frame" x="184" y="621" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="partsSavedButtonTapped:" destination="cVz-ZO-T52" eventType="touchUpInside" id="5Tg-AK-B8p"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bike:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTs-5n-MxE">
                                 <rect key="frame" x="41" y="64" width="37" height="21"/>
@@ -579,6 +582,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Xhh-n1-Sg2"/>
                     </view>
+                    <connections>
+                        <outlet property="partsBikePickerview" destination="SKZ-ga-cpb" id="7Gx-05-adr"/>
+                        <outlet property="partsCostTextbox" destination="f9S-Ms-qVQ" id="1Xg-A2-Ufk"/>
+                        <outlet property="partsDescriptionTextbox" destination="0ez-Fm-CKT" id="F8U-kZ-q3F"/>
+                        <outlet property="partsNameTextbo" destination="CxG-iJ-K1S" id="UxC-Ge-MyL"/>
+                        <outlet property="partsNumberTextbox" destination="UDx-qC-wl6" id="gbz-8Q-DEi"/>
+                        <outlet property="partsSerialTextbox" destination="Wzl-UR-P1M" id="OoP-Yp-h3A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0o6-Hi-uNq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -684,18 +695,21 @@
             </objects>
             <point key="canvasLocation" x="3376.811594202899" y="1897.826086956522"/>
         </scene>
-        <!--View Controller-->
+        <!--Ride Detail View Controller-->
         <scene sceneID="cb0-RH-XWC">
             <objects>
-                <viewController id="RUC-Dt-5O9" sceneMemberID="viewController">
+                <viewController id="RUC-Dt-5O9" customClass="RideDetailViewController" customModule="RideWay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0jt-Ln-87G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49C-mK-7CQ">
-                                <rect key="frame" x="177" y="657" width="46" height="30"/>
+                                <rect key="frame" x="151" y="657" width="98" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Save Ride Info"/>
+                                <connections>
+                                    <action selector="saveRideButtonTapped:" destination="RUC-Dt-5O9" eventType="touchUpInside" id="dnO-N1-ZAm"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="huu-FS-54V">
                                 <rect key="frame" x="0.0" y="95" width="414" height="162"/>
@@ -771,10 +785,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KZ2-Ve-Vlv"/>
                     </view>
+                    <connections>
+                        <outlet property="endDatePicker" destination="Oey-G0-0nz" id="Z2u-cq-Isb"/>
+                        <outlet property="mileageEndTextfield" destination="vgr-lz-ZwG" id="sSz-5w-jfS"/>
+                        <outlet property="mileageStartTextfield" destination="yOK-FF-6a3" id="bJ6-Lx-9ec"/>
+                        <outlet property="notesTextfield" destination="dIT-6f-pfw" id="rj1-IK-A5I"/>
+                        <outlet property="startDatePicker" destination="huu-FS-54V" id="JpC-ps-exH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTK-WN-n8x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3365" y="499"/>
+            <point key="canvasLocation" x="3367" y="488"/>
         </scene>
         <!--New Vehicle View Controller-->
         <scene sceneID="S5c-at-xeY">

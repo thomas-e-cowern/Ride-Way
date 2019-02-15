@@ -80,6 +80,7 @@ class BikeListTableViewController: UITableViewController {
                 } else {
                     print("problem deleting data")
                 }
+               
             }
         }
     }

@@ -8,17 +8,6 @@
 
 import Foundation
 
-//struct VehicleService {
-//    
-//    let vehicleResults: [VehicleInfo]
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case vehicleResults = "Results"
-//    }
-//    
-//}
-
-
 class VehicleInfo: FirebaseObject {
     
     static var collectionName: String = "bikes"
@@ -61,19 +50,6 @@ class VehicleInfo: FirebaseObject {
         self.userId = userId
     }
     
-//    convenience init?(json: [String : Any]) {
-//        guard let vin = json[VehicleInfoConstants.vinKey] as? String,
-//            let year = json[VehicleInfoConstants.yearKey] as? String,
-//            let make = json[VehicleInfoConstants.makeKey] as? String,
-//            let model = json[VehicleInfoConstants.modelKey] as? String,
-//            let displacementCC = json[VehicleInfoConstants.displacementCCKey] as? String,
-//            let displacementCI = json[VehicleInfoConstants.displacementCIKey] as? String,
-//            let plantCity = json[VehicleInfoConstants.plantCity] as? String,
-//            let plantState = json[VehicleInfoConstants.plantState] as? String,
-//            let uid = json[VehicleInfoConstants.uid] as? String
-//            else { return nil }
-//    }
-    
     required convenience init?(dictionary: [String : Any]) {
         guard let vin = dictionary[VehicleInfoConstants.vinKey] as? String,
             let year = dictionary[VehicleInfoConstants.yearKey] as? String,
@@ -89,23 +65,9 @@ class VehicleInfo: FirebaseObject {
                 print("Problem in convienence init")
                 return nil
             }
+
         
-//        if let uid = dictionary[VehicleInfoConstants.uid] as? String {
-//            self.uid = uid
-//        }
-        
-//        self.displacementCC = displacementCC
-//        self.displacementCI = displacementCI
-//        self.make = make
-//        self.model = model
-//        self.year = year
-//        self.plantCity = plantCity
-//        self.plantState = plantState
-//        self.vin = vin
-//        self.uid = uid
-//
-        
-        self.init(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, uid: uid)
+        self.init(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, uid: uid, userId: userId)
     }
     
     enum CodingKeys: String, CodingKey {

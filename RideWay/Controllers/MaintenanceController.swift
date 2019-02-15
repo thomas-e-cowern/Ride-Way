@@ -28,8 +28,10 @@ class MaintenanceController {
         FirebaseController.shared.deleteMaintenenanceRecordsFor(maintenanceRecord: record) { (success) in
             if success == true {
                 print("deleted maintenancdRecord")
+                completion(true)
             } else {
                 print("problem deleting maintenancdRecord")
+                completion(false)
             }
         }
     }
