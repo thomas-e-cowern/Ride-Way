@@ -11,11 +11,13 @@ import UIKit
 class DocumentListTableViewController: UITableViewController {
     
     var motorcycles: [VehicleInfo]? = []
-    var documentList: [Documentation]? = []
+    var documentList: [String?] = []
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getVehicleList()
+        documentList = ["One", "Two", "Three"]
     }
     
     func getVehicleList() {
@@ -31,17 +33,24 @@ class DocumentListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return documentList?.count ?? 0
+        return documentList.count
     }
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell", for: indexPath)
-        let document = documentList?[indexPath.row]
-        let name = document?.name
+        let document = documentList[indexPath.row]
+        let name = document
         cell.textLabel?.text = name
+        cell.imageView?.image = UIImage(named: "Judge")
      return cell
      }
     
+    func getPartsList () {
+        DocumentController.shared.loadImagages(document: <#T##Documentation#>) { (docs) in
+            self.documentList = docs
+            self.tableView.reloadData()
+        }
+    }
     
     /*
      // Override to support conditional editing of the table view.

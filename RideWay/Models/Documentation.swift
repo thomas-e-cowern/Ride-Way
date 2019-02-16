@@ -12,15 +12,15 @@ import UIKit
 class Documentation {
     var name: String
     var documentationId: String
-    var documentationImage: UIImage
+    var documentationImageUrl: URL
     var bikeId: String
     var user: String
 
     
-    init(name: String, documentationId: String = UUID().uuidString, documentationImage: UIImage, bikeId: String, user: String) {
+    init(name: String, documentationId: String = UUID().uuidString, documentationImageUrl: URL, bikeId: String, user: String) {
         self.name = name
         self.documentationId = documentationId
-        self.documentationImage = documentationImage
+        self.documentationImageUrl = documentationImageUrl
         self.bikeId = bikeId
         self.user = user
     }
@@ -29,7 +29,7 @@ class Documentation {
         return [
             DocumentationCodingKeys.nameKey : name,
             DocumentationCodingKeys.documentationIdKey : documentationId,
-            DocumentationCodingKeys.documentationImageKey : documentationImage,
+            DocumentationCodingKeys.documentationImageUrlLKey : documentationImageUrl,
             DocumentationCodingKeys.bikeIdKey : bikeId,
             DocumentationCodingKeys.userKey : user
         ]
@@ -38,18 +38,18 @@ class Documentation {
     required convenience init?(dictionary: [String : Any]) {
         guard let name = dictionary[DocumentationCodingKeys.nameKey] as? String,
             let documentationId = dictionary[DocumentationCodingKeys.documentationIdKey] as? String,
-            let documentationImage = dictionary[DocumentationCodingKeys.documentationImageKey] as? UIImage,
+            let documentationImageUrl = dictionary[DocumentationCodingKeys.documentationImageUrlLKey] as? URL,
             let bikeId = dictionary[DocumentationCodingKeys.bikeIdKey] as? String,
             let user = dictionary[DocumentationCodingKeys.userKey] as? String
             else { return nil }
-        self.init(name: name, documentationId: documentationId, documentationImage: documentationImage, bikeId: bikeId, user: user)
+        self.init(name: name, documentationId: documentationId, documentationImageUrl: documentationImageUrl, bikeId: bikeId, user: user)
     }
 }
 
 class DocumentationCodingKeys {
     static let nameKey = "name"
     static let documentationIdKey = "documentationId"
-    static let documentationImageKey = "documentationImage"
+    static let documentationImageUrlLKey = "documentationImageUrl"
     static let bikeIdKey = "bikeId"
     static let userKey = "userr"
 
