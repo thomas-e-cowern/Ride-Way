@@ -20,11 +20,23 @@ class RideDetailViewController: UIViewController {
     
     // MARK: - Properties
     var Ride: Rides?
+    var bikeInfo: VehicleInfo?
+    var bikeChosen: String?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        let tabBar = tabBarController as? TabViewController
+//        bikeInfo = tabBar?.bikeInfo
+        updateBikeInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateBikeInfo()
+    }
+    
+    func updateBikeInfo() {
+        print(bikeInfo?.uid)
     }
 
     // MARK: - Actions
@@ -33,9 +45,10 @@ class RideDetailViewController: UIViewController {
         let endDate = endDatePicker.date
         guard let startMileage = Double(mileageStartTextfield.text!),
             let endMileage = Double(mileageEndTextfield.text!),
+            let bike = bikeInfo?.uid,
             let notes = notesTextfield.text else { return }
         
-        RidesController.shared.saveNewRide(startDate: startDate, endDate: endDate, mileageStart: startMileage, mileageEnd: endMileage, notes: notes) { (ride) in
+        RidesController.shared.saveNewRide(startDate: startDate, endDate: endDate, mileageStart: startMileage, mileageEnd: endMileage, notes: notes, bikeId: bike) { (ride) in
             print("saved ride")
         }
     }

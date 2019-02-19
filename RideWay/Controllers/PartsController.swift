@@ -20,8 +20,8 @@ class PartsController {
         FirebaseController.shared.saveNewPart(part: part, completion: completion)
     }
     
-    func fetchParts(completion: @escaping ([Parts   ]?) -> Void) {
-        FirebaseController.shared.fetchParts(completion: completion)
+    func fetchParts(bike: String, completion: @escaping ([Parts   ]?) -> Void) {
+        FirebaseController.shared.fetchParts(bike: bike, completion: completion)
     }
     
     func deletePart(part: Parts, completion: @escaping (Bool) -> Void) {

@@ -8,51 +8,57 @@
 
 import UIKit
 
-class DocumentDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class DocumentDetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var documentPicker: UIPickerView!
     @IBOutlet weak var documentNameTextfield: UITextField!
     @IBOutlet weak var documentSelectButton: UIButton!
     @IBOutlet weak var documentPhotoButton: UIButton!
     @IBOutlet weak var documentImageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    var bikes: [VehicleInfo]? = []
+    var bikes: VehicleInfo?
     var bikeChosen: String?
-    var imageData: NSData?
+    var imageData: Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        documentPicker.delegate = self
+//        documentPicker.delegate = self
+        documentNameTextfield.delegate = self
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return bikes?.count ?? 0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let year = bikes?[row].year,
-            let make = bikes?[row].make,
-            let model = bikes?[row].model else { return nil }
-        return "\(year) \(make) \(model)"
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        bikeChosen = bikes?[row].uid
-    }
-    
-    
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return bikes?.count ?? 0
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        guard let year = bikes?[row].year,
+//            let make = bikes?[row].make,
+//            let model = bikes?[row].model else { return nil }
+//        return "\(year) \(make) \(model)"
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        bikeChosen = bikes?[row].uid
+//    }
+
     
     @IBAction func selectDocumentationTapped(_ sender: Any) {
        handleSelectedPhoto()
     }
     
     @IBAction func takeAPhotoButtonTapped(_ sender: Any) {
-       
+       handleScanDocument()
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
@@ -73,6 +79,16 @@ extension DocumentDetailViewController: UIImagePickerControllerDelegate, UINavig
         present(picker, animated: true, completion: nil)
     }
     
+    func handleScanDocument() {
+        print("Inside Handele Scan Doc")
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let bikePicker = UIImagePickerController()
+            bikePicker.delegate = self
+            bikePicker.sourceType = .camera
+            present(bikePicker, animated: true, completion: nil)
+        }
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         var selectedImageFromPicker: UIImage?
@@ -87,7 +103,7 @@ extension DocumentDetailViewController: UIImagePickerControllerDelegate, UINavig
             documentImageView.image = selectImage
         }
 
-        imageData = (selectedImageFromPicker)?.jpegData(compressionQuality: 0.5) as NSData?
+        imageData = (documentImageView.image)?.jpegData(compressionQuality: 0.5)
         
         dismiss(animated: true, completion: nil)
     }

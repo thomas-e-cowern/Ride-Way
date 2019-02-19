@@ -9,12 +9,13 @@
 import UIKit
 
 class ChecklistTableViewController: UITableViewController {
-
+    @IBOutlet weak var checklistNavBar: UINavigationBar!
+  
     var checklist: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        checklistNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
         
         checklist = ["Fluids", "Brakes", "Battery", "Tire Pressure", "Foot Pegs", "Lights/Signals", "Mirrors", "Horn"]
     }
@@ -33,9 +34,9 @@ class ChecklistTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath) as? ChecklistTableViewCell else { return UITableViewCell() }
         let checklistItem = checklist[indexPath.row]
-        cell.textLabel?.text = checklistItem
+        cell.checklistCellLabel.text = checklistItem
         return cell
     }
 

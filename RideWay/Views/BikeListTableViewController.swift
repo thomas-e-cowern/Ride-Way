@@ -11,6 +11,8 @@ import Firebase
 
 class BikeListTableViewController: UITableViewController {
     
+    @IBOutlet weak var bikeNavBar: UINavigationBar!
+    
     var bikeCount: Int = 0
     var bikeInfo: [String : Any] = [:]
     var bikeArray: [String] = []
@@ -19,6 +21,7 @@ class BikeListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getVehicleList()
+        bikeNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,14 +104,18 @@ class BikeListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toBikeDetail" {
+            if let destinationViewController = segue.destination as? TabViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let bikeInfo = dataSource?[indexPath.row]
+                    destinationViewController.bikeInfo = bikeInfo
+                }
+            }
+        }
     }
-    */
-
 }

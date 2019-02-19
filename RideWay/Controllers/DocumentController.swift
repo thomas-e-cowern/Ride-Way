@@ -16,30 +16,30 @@ class DocumentController {
     
     func saveNewDocument(name: String, documentationId: String, documentationImageUrl: URL, bikeId: String, completion: @escaping (Documentation?) -> Void) {
         guard let userId = userId else { return }
-        let document = Documentation(name: name, documentationId: documentationId, documentationImageUrl: documentationImageUrl, bikeId: bikeId, user: userId)
+        let document = Documentation(name: name, bikeId: bikeId, user: userId)
         FirebaseController.shared.saveNewDocument(document: document, completion: completion)
     }
     
-    func fetchDocuemnts(completion: @escaping ([Documentation]?) -> Void) {
-        FirebaseController.shared.fetchDocuments(completion: completion)
+    func fetchDocuemnts(bike: String, completion: @escaping ([Documentation]?) -> Void) {
+        FirebaseController.shared.fetchDocuments(bike: bike, completion: completion)
     }
     
-    func deletePart(part: Parts, completion: @escaping (Bool) -> Void) {
-        FirebaseController.shared.deleteParts(part: part) { (success) in
+    func deleteDocument(document: Documentation, completion: @escaping (Bool) -> Void) {
+        FirebaseController.shared.deleteDocument(document: document) { (success) in
             if success == true {
-                print("deleted part")
+                print("deleted document")
                 completion(true)
             } else {
-                print("Problem deleting part")
+                print("Problem deleting document")
                 completion(false)
             }
         }
     }
     
-    func addImage(data: NSData, name: String, bike: String) {
+    func addImage(data: Data, name: String, bike: String) {
         guard let userId = userId else { return }
-        let finalDocument = Documentation(name: name, documentationImage: data, bikeId: bike, user: userId)
-        FirebaseController.shared.uploadImageToFirebaseStorage(document: finalDocument, name: name)
+        let finalDocument = Documentation(name: name, bikeId: bike, user: userId)
+        FirebaseController.shared.uploadImageToFirebaseStorage(document: finalDocument, image: data)
     }
     
     func loadImagages(document: Documentation) {

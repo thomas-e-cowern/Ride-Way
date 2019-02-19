@@ -9,8 +9,10 @@
 import UIKit
 
 class PartsListTableViewController: UITableViewController {
-
-    var motorcycles: [VehicleInfo]?
+    
+    @IBOutlet weak var partsNavBar: UINavigationBar!
+    
+    var motorcycle: VehicleInfo?
     var partsList: [Parts]?
     
     
@@ -18,17 +20,18 @@ class PartsListTableViewController: UITableViewController {
         super.viewDidLoad()
         getVehicleList()
         getPartsList()
+        partsNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
 
     func getVehicleList() {
         VehicleController.shared.fetchVehicles { (vehicles) in
-            self.motorcycles = vehicles
             self.tableView.reloadData()
         }
     }
     
     func getPartsList () {
-        PartsController.shared.fetchParts { (parts) in
+        guard let bikeId = motorcycle?.uid else { return }
+        PartsController.shared.fetchParts(bike: bikeId) { (parts) in
             self.partsList = parts
             self.tableView.reloadData()
         }
@@ -53,16 +56,6 @@ class PartsListTableViewController: UITableViewController {
         cell.textLabel?.text = partName
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -109,7 +102,7 @@ class PartsListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPartsDetail" {
             if let destinationViewController = segue.destination as? PartsDetailViewController {
-                destinationViewController.bikes = motorcycles
+                destinationViewController.bike = motorcycle
             }
         }
     }

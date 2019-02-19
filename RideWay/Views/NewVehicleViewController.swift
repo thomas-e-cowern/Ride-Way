@@ -12,7 +12,7 @@ class NewVehicleViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var vinTextfield: UITextField!
     @IBOutlet weak var vinButton: UIButton!
-    @IBOutlet weak var vinTextField: UITextField!
+//    @IBOutlet weak var vinTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var makeTextField: UITextField!
     @IBOutlet weak var modelTextField: UITextField!
@@ -28,6 +28,22 @@ class NewVehicleViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        vinTextfield.layer.borderWidth = 1
+        vinTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        yearTextField.layer.borderWidth = 1
+        yearTextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        makeTextField.layer.borderWidth = 1
+        makeTextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        modelTextField.layer.borderWidth = 1
+        modelTextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        displacementCCTextField.layer.borderWidth = 1
+        displacementCCTextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        displacementCITextField.layer.borderWidth = 1
+        displacementCITextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        plantCityTextField.layer.borderWidth = 1
+        plantCityTextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        plantStateTextField.layer.borderWidth = 1
+        plantStateTextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
     
     // MARK: - Methods
@@ -44,7 +60,7 @@ class NewVehicleViewController: UIViewController {
             }
             print("🧿🧿🧿🧿🧿\(vehicleInfo)🧿🧿🧿🧿🧿")
             DispatchQueue.main.async {
-                self.vinTextField.text = vehicleInfo.vin
+                self.vinTextfield.text = vehicleInfo.vin
                 self.yearTextField.text = vehicleInfo.year
                 self.makeTextField.text = vehicleInfo.make
                 self.modelTextField.text = vehicleInfo.model
@@ -65,22 +81,11 @@ class NewVehicleViewController: UIViewController {
         let year = yearTextField.text,
         let plantCity = plantCityTextField.text,
         let plantState = plantStateTextField.text,
-        let vin = vinTextField.text else { return }
+        let vin = vinTextfield.text else { return }
         let uid = ""
         
         VehicleController.shared.createVehicleInfo(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin) { (vehicle) in
             print("vehicle saved: \(vehicle)")
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

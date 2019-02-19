@@ -10,17 +10,24 @@ import UIKit
 
 class MaitenenaceTableViewController: UITableViewController {
     
+    @IBOutlet weak var maintenanceNavBar: UINavigationBar!
+    
     var dataSource: [VehicleInfo]?
     var maintenanceRecords: [Maintenance]?
+    var bikeInfo: VehicleInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getVehicleList()
         getMaintenanceList()
+        maintenanceNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let tabBar = tabBarController as? TabViewController
+        bikeInfo = tabBar?.bikeInfo
+        print("MLVC: \(bikeInfo?.uid)")
         getMaintenanceList()
     }
     

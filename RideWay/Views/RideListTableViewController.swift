@@ -9,18 +9,36 @@
 import UIKit
 
 class RideListTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var rideNavBar: UINavigationBar!
+    
+    var motorcycle: VehicleInfo?
     var rides: [Rides]?
+    var bikeInfo: VehicleInfo?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        RidesController.shared.fetchRides { (returnedRides) in
+        rideNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        let tabBar = tabBarController as? TabViewController
+        bikeInfo = tabBar?.bikeInfo
+        print("RLVC: \(bikeInfo?.uid)")
+        getRidesList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+
+    func getRidesList () {
+        guard let bikeId = bikeInfo?.uid else { return }
+        RidesController.shared.fetchRides(bike: bikeId) { (returnedRides) in
             self.rides = returnedRides
             self.tableView.reloadData()
         }
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,14 +109,21 @@ class RideListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toRideDetail" {
+            if let destinationViewController = segue.destination as? RideDetailViewController {
+                destinationViewController.bikeInfo = bikeInfo
+            }
+        } else {
+            if let destinationViewController = segue.destination as? RideDetailViewController {
+                destinationViewController.bikeInfo = bikeInfo
+            }
+        }
     }
-    */
+    
 
 }

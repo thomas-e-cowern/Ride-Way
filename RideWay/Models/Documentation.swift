@@ -12,12 +12,12 @@ import UIKit
 class Documentation {
     var name: String
     var documentationId: String
-    var documentationImageUrl: URL
+    var documentationImageUrl: String?
     var bikeId: String
     var user: String
 
     
-    init(name: String, documentationId: String = UUID().uuidString, documentationImageUrl: URL, bikeId: String, user: String) {
+    init(name: String, documentationId: String = UUID().uuidString, documentationImageUrl: String = "", bikeId: String, user: String) {
         self.name = name
         self.documentationId = documentationId
         self.documentationImageUrl = documentationImageUrl
@@ -29,7 +29,7 @@ class Documentation {
         return [
             DocumentationCodingKeys.nameKey : name,
             DocumentationCodingKeys.documentationIdKey : documentationId,
-            DocumentationCodingKeys.documentationImageUrlLKey : documentationImageUrl,
+            DocumentationCodingKeys.documentationImageUrlLKey : documentationImageUrl as Any,
             DocumentationCodingKeys.bikeIdKey : bikeId,
             DocumentationCodingKeys.userKey : user
         ]
@@ -38,7 +38,7 @@ class Documentation {
     required convenience init?(dictionary: [String : Any]) {
         guard let name = dictionary[DocumentationCodingKeys.nameKey] as? String,
             let documentationId = dictionary[DocumentationCodingKeys.documentationIdKey] as? String,
-            let documentationImageUrl = dictionary[DocumentationCodingKeys.documentationImageUrlLKey] as? URL,
+            let documentationImageUrl = dictionary[DocumentationCodingKeys.documentationImageUrlLKey] as? String,
             let bikeId = dictionary[DocumentationCodingKeys.bikeIdKey] as? String,
             let user = dictionary[DocumentationCodingKeys.userKey] as? String
             else { return nil }

@@ -9,20 +9,24 @@
 import UIKit
 
 class DocumentListTableViewController: UITableViewController {
+    @IBOutlet weak var documentNavBar: UINavigationBar!
     
-    var motorcycles: [VehicleInfo]? = []
-    var documentList: [String?] = []
+    var motorcycle: VehicleInfo? 
+    var documentList: [Documentation?] = []
     var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getVehicleList()
-        documentList = ["One", "Two", "Three"]
+        getDocuments()
+        documentNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
     
-    func getVehicleList() {
-        VehicleController.shared.fetchVehicles { (vehicles) in
-            self.motorcycles = vehicles
+    func getDocuments() {
+        guard let bikeId = motorcycle?.uid else { return }
+        DocumentController.shared.fetchDocuemnts(bike: bikeId) { (documents) in
+            guard let documents = documents else { return }
+            print("DOCS: \(documents.count)")
+            self.documentList = documents
             self.tableView.reloadData()
         }
     }
@@ -39,18 +43,18 @@ class DocumentListTableViewController: UITableViewController {
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell", for: indexPath)
         let document = documentList[indexPath.row]
-        let name = document
+        let name = document?.name
         cell.textLabel?.text = name
-        cell.imageView?.image = UIImage(named: "Judge")
+//        cell.imageView?.image = UIImage(named: "Judge")
      return cell
      }
     
-    func getPartsList () {
-        DocumentController.shared.loadImagages(document: <#T##Documentation#>) { (docs) in
-            self.documentList = docs
-            self.tableView.reloadData()
-        }
-    }
+//    func getPartsList () {
+//        DocumentController.shared.loadImagages(document: <#T##Documentation#>) { (docs) in
+//            self.documentList = docs
+//            self.tableView.reloadData()
+//        }
+//    }
     
     /*
      // Override to support conditional editing of the table view.
@@ -92,7 +96,7 @@ class DocumentListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDocumentDetail" {
             if let destinationViewController = segue.destination as? DocumentDetailViewController {
-                destinationViewController.bikes = motorcycles
+                destinationViewController.bikes = motorcycle
             }
         }
     }

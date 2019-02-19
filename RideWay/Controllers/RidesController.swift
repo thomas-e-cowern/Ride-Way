@@ -14,14 +14,14 @@ class RidesController {
     
     let userId = FirebaseController.shared.userId
     
-    func saveNewRide(startDate: Date, endDate: Date, mileageStart: Double, mileageEnd: Double, notes: String, completion: @escaping (Rides?) -> Void) {
+    func saveNewRide(startDate: Date, endDate: Date, mileageStart: Double, mileageEnd: Double, notes: String, bikeId: String, completion: @escaping (Rides?) -> Void) {
         guard let userId = userId else { return }
-        let ride = Rides(startDate: startDate, endDate: endDate, mileageStart: mileageStart, mileageEnd: mileageEnd, notes: notes, user: userId)
+        let ride = Rides(startDate: startDate, endDate: endDate, mileageStart: mileageStart, mileageEnd: mileageEnd, notes: notes, user: userId, bikeId: bikeId)
         FirebaseController.shared.saveNewRide(ride: ride, completion: completion)
     }
     
-    func fetchRides(completion: @escaping ([Rides]?) -> Void) {
-        FirebaseController.shared.fetchRides(completion: completion)
+    func fetchRides(bike: String, completion: @escaping ([Rides]?) -> Void) {
+        FirebaseController.shared.fetchRides(bike: bike, completion: completion)
     }
     
     func deleteRide(ride: Rides, completion: @escaping (Bool) -> Void) {
