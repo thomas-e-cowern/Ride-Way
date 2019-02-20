@@ -8,63 +8,39 @@
 
 import UIKit
 
-class MaintenanceDetailViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class MaintenanceDetailViewController: UIViewController {
 
+    @IBOutlet weak var bikeLabel: UILabel!
     @IBOutlet weak var maintenanceDatePicker: UIDatePicker!
-    @IBOutlet weak var maintenanceBikePicker: UIPickerView!
     @IBOutlet weak var maintenanceLocationTextfield: UITextField!
     @IBOutlet weak var maintenanceMilesTextfield: UITextField!
     @IBOutlet weak var maintenenceServicePerformedTextfield: UITextField!
 
     
-    var bikes: [VehicleInfo]? = []
-    var bikeChosen: String?
+    var bike: VehicleInfo?
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        maintenanceBikePicker.delegate = self
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return bikes?.count ?? 0
-    }
-
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let year = bikes?[row].year,
-            let make = bikes?[row].make,
-            let model = bikes?[row].model else { return nil }
-         return "\(year) \(make) \(model)"
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        bikeChosen = bikes?[row].uid
+        maintenanceLocationTextfield.layer.borderWidth = 1
+        maintenanceLocationTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        maintenanceMilesTextfield.layer.borderWidth = 1
+        maintenanceMilesTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        maintenenceServicePerformedTextfield.layer.borderWidth = 1
+        maintenenceServicePerformedTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        guard let year = bike?.year,
+            let make = bike?.make,
+            let model = bike?.model else { return }
+        bikeLabel.text = "\(year) \(make) \(model)"
     }
    
     @IBAction func maintenanceSaveButtonPressed(_ sender: Any) {
         let date = maintenanceDatePicker.date
-        guard let bike = bikeChosen,
-            let location = maintenanceLocationTextfield.text,
+        guard let location = maintenanceLocationTextfield.text,
             let miles = Double(maintenanceMilesTextfield.text!),
+            let bikeChosen = bike?.uid,
             let servicePerformed = maintenenceServicePerformedTextfield.text else { return }
         
-        MaintenanceController.shared.saveNewMaintenanceRecord(date: date, location: location, servicePerformed: servicePerformed, miles: miles, motorcycleId: bike) { (maintenenceRecord) in
-//            print("Maintenece Record saved: \(maintenenceRecord)")
+        MaintenanceController.shared.saveNewMaintenanceRecord(date: date, location: location, servicePerformed: servicePerformed, miles: miles, motorcycleId: bikeChosen) { (maintenenceRecord) in
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }

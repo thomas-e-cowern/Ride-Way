@@ -18,8 +18,11 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loginEmailTextfield.layer.borderWidth = 1
+        loginEmailTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        loginPasswordTextfield.layer.borderWidth = 1
+        loginPasswordTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -35,7 +38,7 @@ class LogInViewController: UIViewController {
         print(password)
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let user = user {
-                                    print("📍📍📍📍📍 User: \(user.user.email) 📍📍📍📍📍")
+                print("📍📍📍📍📍 User: \(user.user.email) 📍📍📍📍📍")
                 guard let email = user.user.email else {
                     print("Problem getting user email in signIn")
                     return
@@ -53,7 +56,7 @@ class LogInViewController: UIViewController {
     
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toHome" {

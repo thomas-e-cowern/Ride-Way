@@ -19,11 +19,18 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        registerEmailTextfield.layer.borderWidth = 1
+        registerEmailTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        registerPasswordTextfield.layer.borderWidth = 1
+        registerPasswordTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        registerConfirmPasswordTextfield.layer.borderWidth = 1
+        registerConfirmPasswordTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
+        
+        
+        
         guard let email = registerEmailTextfield.text, !email.isEmpty else {
             print("Something is wrong with the user's email")
             return
@@ -53,6 +60,9 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    @IBAction func backToLoginButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Navigation
 

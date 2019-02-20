@@ -12,15 +12,17 @@ class MaitenenaceTableViewController: UITableViewController {
     
     @IBOutlet weak var maintenanceNavBar: UINavigationBar!
     
-    var dataSource: [VehicleInfo]?
+    var dataSource: VehicleInfo?
     var maintenanceRecords: [Maintenance]?
     var bikeInfo: VehicleInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getVehicleList()
+//        getVehicleList()
         getMaintenanceList()
         maintenanceNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        self.title = "Your bike here..."
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +31,7 @@ class MaitenenaceTableViewController: UITableViewController {
         bikeInfo = tabBar?.bikeInfo
         print("MLVC: \(bikeInfo?.uid)")
         getMaintenanceList()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,12 +39,12 @@ class MaitenenaceTableViewController: UITableViewController {
         getMaintenanceList()
     }
 
-    func getVehicleList() {
-        VehicleController.shared.fetchVehicles { (vehicles) in
-            self.dataSource = vehicles
-            self.tableView.reloadData()
-        }
-    }
+//    func getVehicleList() {
+//        VehicleController.shared.fetchVehicles { (vehicles) in
+//            self.dataSource = vehicles
+//            self.tableView.reloadData()
+//        }
+//    }
     
     func getMaintenanceList () {
         guard let bikeId = bikeInfo?.uid else { return }
@@ -128,7 +131,7 @@ class MaitenenaceTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMaintenanceDetail" {
             if let destinationViewController = segue.destination as? MaintenanceDetailViewController {
-                destinationViewController.bikes = dataSource
+                destinationViewController.bike = bikeInfo
             }
         }
     }

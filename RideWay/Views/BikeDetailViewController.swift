@@ -24,7 +24,6 @@ class BikeDetailViewController: UIViewController {
         let tabBar = tabBarController as? TabViewController
         bikeInfo = tabBar?.bikeInfo
         updateViews()
-        // Do any additional setup after loading the view.
     }
     
     func updateViews () {
