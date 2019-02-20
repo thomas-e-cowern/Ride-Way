@@ -21,6 +21,7 @@ class VehicleInfo: FirebaseObject {
     let vin: String
     var uid: String
     var userId: String
+    var bikePhotoUrlString: String?
     
     var dictionary: [String : Any] {
         return [
@@ -33,11 +34,12 @@ class VehicleInfo: FirebaseObject {
             VehicleInfoConstants.plantCity: plantCity,
             VehicleInfoConstants.plantState: plantState,
             VehicleInfoConstants.uid: uid,
-            VehicleInfoConstants.userId: userId
+            VehicleInfoConstants.userId: userId,
+            VehicleInfoConstants.bikePhotoUrlString: bikePhotoUrlString
         ]
     }
     
-    init(displacementCC: String, displacementCI: String, make: String, model: String, year: String, plantCity: String, plantState: String, vin: String, uid: String = UUID().uuidString, userId: String = "") {
+    init(displacementCC: String, displacementCI: String, make: String, model: String, year: String, plantCity: String, plantState: String, vin: String, uid: String = UUID().uuidString, userId: String = "", bikePhotoUrlString: String = "") {
         self.displacementCC = displacementCC
         self.displacementCI = displacementCI
         self.make = make
@@ -48,6 +50,7 @@ class VehicleInfo: FirebaseObject {
         self.vin = vin
         self.uid = uid
         self.userId = userId
+        self.bikePhotoUrlString = bikePhotoUrlString
     }
     
     required convenience init?(dictionary: [String : Any]) {
@@ -60,14 +63,15 @@ class VehicleInfo: FirebaseObject {
             let plantCity = dictionary[VehicleInfoConstants.plantCity] as? String,
             let plantState = dictionary[VehicleInfoConstants.plantState] as? String,
             let uid = dictionary[VehicleInfoConstants.uid] as? String,
-            let userId = dictionary[VehicleInfoConstants.userId] as? String
+            let userId = dictionary[VehicleInfoConstants.userId] as? String,
+            let bikePhotoUrlString = dictionary[VehicleInfoConstants.bikePhotoUrlString] as? String
             else {
                 print("Problem in convienence init")
                 return nil
             }
 
         
-        self.init(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, uid: uid, userId: userId)
+        self.init(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, uid: uid, userId: userId, bikePhotoUrlString: bikePhotoUrlString)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -80,6 +84,7 @@ class VehicleInfo: FirebaseObject {
         case plantState = "PlantState"
         case vin = "VIN"
         case uid = "uid"
+        case bikePhotoUrlString = "bikePhotoUrlString"
     }
     
 }
@@ -95,5 +100,6 @@ class VehicleInfoConstants {
     static let plantState = "plantState"
     static let uid = "uid"
     static let userId = "userId"
+    static let bikePhotoUrlString = "bikePhotoUrlString"
 }
 

@@ -19,6 +19,12 @@ class VehicleController {
         FirebaseController.shared.saveToDatabase(vehicleInfo: vehicleInfo, completion: completion)
     }
     
+    func saveVehicleInfo(displacementCC: String, displacementCI: String, make: String, model: String, year: String, plantCity: String, plantState: String, vin: String, image: Data, completion: @escaping (VehicleInfo?) -> Void) {
+        let vehicleInfo = VehicleInfo(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin)
+        FirebaseController.shared.saveBikePic(bike: vehicleInfo, image: image)
+//        FirebaseController.shared.saveToDatabase(vehicleInfo: vehicleInfo, completion: completion)
+    }
+    
     func fetchVehicles(completion: @escaping ([VehicleInfo]?) -> Void) {
         FirebaseController.shared.fetchVehiclesFromFirebaseFor(completion: completion)
     }

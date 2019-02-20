@@ -20,9 +20,11 @@ class FirebaseController {
     
     let storageRef = Storage.storage().reference()
     
+    let documentRef = Storage.storage()
+    
     // MARK: - Motorcycles
     func saveToDatabase(vehicleInfo: VehicleInfo, completion: @escaping (VehicleInfo?) -> Void) {
-
+        vehicleInfo.bikePhotoUrlString = "gs://ride-way.appspot.com/photos/\(vehicleInfo.userId)/\(vehicleInfo.uid)/\(vehicleInfo.model)"
         guard let userId = userId else { return }
         vehicleInfo.userId = userId
         let dbref = docRef.collection("bikes").document(vehicleInfo.uid)
@@ -37,6 +39,28 @@ class FirebaseController {
             }
         }
     }
+    
+    func saveBikePic(bike: VehicleInfo, image: Data) {
+        print("attempting to upload an image")
+        let bikeStorageRef = storageRef.child("photos/\(bike.userId)/\(bike.uid)").child(bike.model)
+        let uploadMetaData = StorageMetadata()
+        uploadMetaData.contentType = "image/jpg"
+        bikeStorageRef.putData(image as Data, metadata: uploadMetaData) { (metadata, error) in
+            if (error != nil) {
+                print("recieved an error: \(String(describing: error?.localizedDescription))")
+            } else {
+                print("upload complete! \(String(describing: metadata))")
+                let bikePhotoRef = self.storageRef.child("photos/\(bike.userId)/\(bike.uid)").child(bike.model)
+                
+                print(bikePhotoRef)
+            }
+        }
+        saveToDatabase(vehicleInfo: bike) { (success) in
+            
+        }
+        
+    }
+    
     
     func fetchVehiclesFromFirebaseFor(completion: @escaping ([VehicleInfo]) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -73,11 +97,11 @@ class FirebaseController {
         }
     }
     
-//    func updateVehicleInFirebase(vehicle: VehicleInfo, completion: @escaping (Bool) -> Void) {
-//        guard let documentId = vehicle.uid else { return }
-//        let dbref = docRef.collection("bikes").document(documentId)
-//        dbref.updateData(<#T##fields: [AnyHashable : Any]##[AnyHashable : Any]#>)
-//    }
+    //    func updateVehicleInFirebase(vehicle: VehicleInfo, completion: @escaping (Bool) -> Void) {
+    //        guard let documentId = vehicle.uid else { return }
+    //        let dbref = docRef.collection("bikes").document(documentId)
+    //        dbref.updateData(<#T##fields: [AnyHashable : Any]##[AnyHashable : Any]#>)
+    //    }
     
     // MARK: - Maintenance
     func saveMaintenenaceRecord(for maintenanceRecord: Maintenance, completion: @escaping (Maintenance?) -> Void) {
@@ -94,10 +118,10 @@ class FirebaseController {
         }
     }
     
-    func fetchMaintenenanceRecordsFor(completion: @escaping ([Maintenance]?) -> Void) {
+    func fetchMaintenenanceRecordsFor(bike: String, completion: @escaping ([Maintenance]?) -> Void) {
         guard let userId = userId else { return }
         let collection = docRef.collection("maintenance")
-        let query = collection.whereField("user", isEqualTo: userId)
+        let query = collection.whereField("user", isEqualTo: userId).whereField("motorcycle", isEqualTo: bike)
         query.getDocuments { (querySnapshot, error) in
             if let error = error {print("😡 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)"); completion([])}
             if let snapshot = querySnapshot {let data = snapshot.documents.compactMap { Maintenance(dictionary: $0.data()) }; completion(data)}
@@ -135,10 +159,12 @@ class FirebaseController {
         }
     }
     
+    
+    // DHS2J39bzQRouwryF4b2fomwjfr1
     func fetchRides(bike: String, completion: @escaping ([Rides]?) -> Void) {
         guard let userId = userId else { return }
         let collection = docRef.collection("rides")
-        let query = collection.whereField("user", isEqualTo: userId).whereField("bikeId", isEqualTo: bike)
+        let query = collection.whereField("userId", isEqualTo: userId).whereField("bikeId", isEqualTo: bike)
         query.getDocuments { (querySnapshot, error) in
             if let error = error {print("😡 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)"); completion([])}
             if let snapshot = querySnapshot {let data = snapshot.documents.compactMap { Rides(dictionary: $0.data()) }; completion(data)}
@@ -203,7 +229,7 @@ class FirebaseController {
     
     // MARK: - Documentation
     func saveNewDocument(document: Documentation, completion: @escaping (Documentation?) -> Void) {
-        document.documentationImageUrl = "gs://ride-way.appspot.com/photos/\(document.name)"
+        document.documentationImageUrl = "gs://ride-way.appspot.com/photos/\(document.user)/\(document.bikeId)/\(document.name)"
         let dbref = docRef.collection("documentation").document(document.documentationId)
         dbref.setData(document.dictionary) { err in
             if let err = err {
@@ -217,6 +243,7 @@ class FirebaseController {
     
     func fetchDocuments(bike: String, completion: @escaping ([Documentation]?) -> Void) {
         guard let userId = userId else { return }
+        
         let collection = docRef.collection("documentation")
         let query = collection.whereField("userr", isEqualTo: userId).whereField("bikeId", isEqualTo: bike)
         query.getDocuments { (querySnapshot, error) in
@@ -242,7 +269,7 @@ class FirebaseController {
     
     func uploadImageToFirebaseStorage(document: Documentation, image: Data) {
         print("attempting to upload an image")
-        let bikeStorageRef = storageRef.child("photos").child(document.name)
+        let bikeStorageRef = storageRef.child("photos/\(document.user)/\(document.bikeId)").child(document.name)
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpg"
         bikeStorageRef.putData(image as Data, metadata: uploadMetaData) { (metadata, error) in
@@ -250,7 +277,7 @@ class FirebaseController {
                 print("recieved an error: \(String(describing: error?.localizedDescription))")
             } else {
                 print("upload complete! \(String(describing: metadata))")
-                let bikePhotoRef = self.storageRef.child("photos")
+                let bikePhotoRef = self.storageRef.child("photos/\(document.user)/\(document.bikeId)/\(document.name)")
                 
                 print(bikePhotoRef)
             }
@@ -260,15 +287,21 @@ class FirebaseController {
         }
     }
     
-   // https://firebasestorage.googleapis.com/v0/b/ride-way.appspot.com/o/photos%2FTest?alt=media&token=4a37d3e3-8eff-4ffc-857d-791336e6a157
-    
-    func downloadImagesFromFirebaseStorage(document: Documentation) {
+    func downloadImagesFromFirebaseStorage(url: String, commpletion: @escaping (UIImage) -> Void) {
         print("attempting to download images")
-        storageRef.child("\(document.user)/\(document.bikeId)/\(document.documentationId)").child("\(document.name).jpg").downloadURL { (url, error) in
-            if (error != nil) {
-                print("recieved an error: \(String(describing: error?.localizedDescription))")
+        let imgUrl = documentRef.reference(forURL: url)
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        imgUrl.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("😡 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)")
+                commpletion(UIImage())
+                return
             } else {
-                print("Download URL: \(String(describing: url))")
+                // Data for "images/island.jpg" is returned
+                guard let image = UIImage(data: data!) else { return }
+                print(image.size)
+                commpletion(image)
+                return
             }
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DocumentController {
     
@@ -42,8 +43,9 @@ class DocumentController {
         FirebaseController.shared.uploadImageToFirebaseStorage(document: finalDocument, image: data)
     }
     
-    func loadImagages(document: Documentation) {
-        guard let userId = userId else { return }
-        FirebaseController.shared.downloadImagesFromFirebaseStorage(document: document)
+    func loadImagages(url: String, completion: @escaping (UIImage) -> Void) {
+        FirebaseController.shared.downloadImagesFromFirebaseStorage(url: url) { (docImage) in
+            completion(docImage)
+        }
     }
 }

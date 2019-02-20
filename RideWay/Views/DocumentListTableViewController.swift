@@ -31,6 +31,8 @@ class DocumentListTableViewController: UITableViewController {
         }
     }
     
+    
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -41,12 +43,10 @@ class DocumentListTableViewController: UITableViewController {
     }
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell", for: indexPath) as! DocumentListTableViewCell
         let document = documentList[indexPath.row]
-        let name = document?.name
-        cell.textLabel?.text = name
-//        cell.imageView?.image = UIImage(named: "Judge")
-     return cell
+        cell.document = document
+        return cell
      }
     
 //    func getPartsList () {
@@ -100,5 +100,4 @@ class DocumentListTableViewController: UITableViewController {
             }
         }
     }
-    
 }

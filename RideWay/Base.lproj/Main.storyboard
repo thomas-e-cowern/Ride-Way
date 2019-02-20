@@ -927,13 +927,40 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="documentCell" id="FL8-Pk-jfg">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="documentCell" rowHeight="101" id="FL8-Pk-jfg" customClass="DocumentListTableViewCell" customModule="RideWay" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FL8-Pk-jfg" id="ZVR-L6-oew">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100.66666666666667"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LkK-Bt-NfI">
+                                            <rect key="frame" x="8" y="8" width="81.666666666666671" height="84.666666666666671"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="LkK-Bt-NfI" secondAttribute="height" multiplier="83:86" id="sN6-RG-RRh"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laQ-1B-r8N">
+                                            <rect key="frame" x="97.666666666666657" y="8" width="308.33333333333337" height="84.666666666666671"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="LkK-Bt-NfI" firstAttribute="top" secondItem="ZVR-L6-oew" secondAttribute="top" constant="8" id="HWq-kh-ufg"/>
+                                        <constraint firstItem="laQ-1B-r8N" firstAttribute="top" secondItem="ZVR-L6-oew" secondAttribute="top" constant="8" id="HhP-ST-YjK"/>
+                                        <constraint firstAttribute="trailing" secondItem="laQ-1B-r8N" secondAttribute="trailing" constant="8" id="LVb-05-xa4"/>
+                                        <constraint firstAttribute="bottom" secondItem="laQ-1B-r8N" secondAttribute="bottom" constant="8" id="OKO-iG-xe0"/>
+                                        <constraint firstAttribute="bottom" secondItem="LkK-Bt-NfI" secondAttribute="bottom" constant="8" id="Wgk-IQ-lai"/>
+                                        <constraint firstItem="LkK-Bt-NfI" firstAttribute="leading" secondItem="ZVR-L6-oew" secondAttribute="leading" constant="8" id="o6g-O8-dOI"/>
+                                        <constraint firstItem="laQ-1B-r8N" firstAttribute="leading" secondItem="LkK-Bt-NfI" secondAttribute="trailing" constant="8" id="rkq-fS-Omc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="documentCellImage" destination="LkK-Bt-NfI" id="2ZT-2A-zOk"/>
+                                    <outlet property="documentTextlabel" destination="laQ-1B-r8N" id="agf-ls-4Xg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -947,7 +974,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4r-0Z-yVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4065" y="-1355"/>
+            <point key="canvasLocation" x="4064" y="-1357"/>
         </scene>
         <!--Document Detail View Controller-->
         <scene sceneID="ZBb-wa-wRO">
@@ -1172,8 +1199,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Judge" translatesAutoresizingMaskIntoConstraints="NO" id="O5t-Yl-j8V">
-                                <rect key="frame" x="0.0" y="64" width="414" height="200"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSf-7U-8g6">
+                                <rect key="frame" x="0.0" y="64" width="414" height="208"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="addBikePictureButtonPressed:" destination="8Wg-Jf-tez" eventType="touchUpInside" id="t9y-gV-PJc"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Judge" translatesAutoresizingMaskIntoConstraints="NO" id="O5t-Yl-j8V">
+                                <rect key="frame" x="0.0" y="64" width="414" height="208"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="bGw-d1-EXe"/>
                                 </constraints>
@@ -1393,6 +1427,8 @@
                         <constraints>
                             <constraint firstItem="gPW-ML-Ww5" firstAttribute="trailing" secondItem="3za-Nm-XQ3" secondAttribute="trailing" id="1Op-rg-TeZ"/>
                             <constraint firstItem="O5t-Yl-j8V" firstAttribute="leading" secondItem="gPW-ML-Ww5" secondAttribute="leading" id="6Zm-XD-WX8"/>
+                            <constraint firstItem="bSf-7U-8g6" firstAttribute="height" secondItem="O5t-Yl-j8V" secondAttribute="height" id="LEN-mu-aMJ"/>
+                            <constraint firstItem="bSf-7U-8g6" firstAttribute="width" secondItem="O5t-Yl-j8V" secondAttribute="width" id="OrF-qo-Ers"/>
                             <constraint firstItem="3za-Nm-XQ3" firstAttribute="leading" secondItem="gPW-ML-Ww5" secondAttribute="leading" id="bEo-QE-5aD"/>
                             <constraint firstItem="O5t-Yl-j8V" firstAttribute="trailing" secondItem="gPW-ML-Ww5" secondAttribute="trailing" id="cee-ZY-sIZ"/>
                             <constraint firstItem="3za-Nm-XQ3" firstAttribute="top" secondItem="O5t-Yl-j8V" secondAttribute="bottom" constant="8" id="koF-QJ-7l7"/>
@@ -1402,6 +1438,8 @@
                         <viewLayoutGuide key="safeArea" id="gPW-ML-Ww5"/>
                     </view>
                     <connections>
+                        <outlet property="addBikeImageView" destination="O5t-Yl-j8V" id="0fX-p7-GbI"/>
+                        <outlet property="addBikePictureButtonPressed" destination="bSf-7U-8g6" id="9s4-OT-qmg"/>
                         <outlet property="displacementCCTextField" destination="EUo-QX-HK9" id="WgA-mP-7Ew"/>
                         <outlet property="displacementCITextField" destination="Nt8-FI-pEg" id="zbf-3U-nL1"/>
                         <outlet property="makeTextField" destination="JmP-qS-uLW" id="mzY-8L-UvO"/>
@@ -1415,7 +1453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6v-0B-jf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="-662"/>
+            <point key="canvasLocation" x="905.79710144927549" y="-662.77173913043487"/>
         </scene>
         <!--Bike List Table View Controller-->
         <scene sceneID="dTd-qu-AUg">
@@ -1425,7 +1463,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="8ej-ms-wzg">
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="8ej-ms-wzg">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1444,14 +1482,39 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bikeCell" rowHeight="109" id="4DP-7X-z5C">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bikeCell" rowHeight="109" id="4DP-7X-z5C" customClass="BikeListTableViewCell" customModule="RideWay" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4DP-7X-z5C" id="TYE-Yn-a3J">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="108.66666666666667"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3rU-Ny-lXE">
+                                            <rect key="frame" x="8" y="8" width="92.666666666666671" height="92.666666666666671"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="3rU-Ny-lXE" secondAttribute="height" multiplier="1:1" id="Ool-1J-n2b"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksc-ge-Unl">
+                                            <rect key="frame" x="108.66666666666666" y="8" width="297.33333333333337" height="92.666666666666671"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="3rU-Ny-lXE" secondAttribute="bottom" constant="8" id="7iC-fZ-Mhp"/>
+                                        <constraint firstAttribute="bottom" secondItem="ksc-ge-Unl" secondAttribute="bottom" constant="8" id="9ez-Cz-MQS"/>
+                                        <constraint firstItem="3rU-Ny-lXE" firstAttribute="leading" secondItem="TYE-Yn-a3J" secondAttribute="leading" constant="8" id="DHr-fh-lT3"/>
+                                        <constraint firstAttribute="trailing" secondItem="ksc-ge-Unl" secondAttribute="trailing" constant="8" id="DNN-Xa-8NF"/>
+                                        <constraint firstItem="3rU-Ny-lXE" firstAttribute="top" secondItem="TYE-Yn-a3J" secondAttribute="top" constant="8" id="hVS-pC-Yjs"/>
+                                        <constraint firstItem="ksc-ge-Unl" firstAttribute="leading" secondItem="3rU-Ny-lXE" secondAttribute="trailing" constant="8" id="rL5-mo-Yy1"/>
+                                        <constraint firstItem="ksc-ge-Unl" firstAttribute="top" secondItem="TYE-Yn-a3J" secondAttribute="top" constant="8" id="vyx-X4-hYx"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="bikeListTableviewCell" destination="3rU-Ny-lXE" id="nj0-6t-2rZ"/>
+                                    <outlet property="bikeListTableviewLabel" destination="ksc-ge-Unl" id="A38-rV-Gtp"/>
                                     <segue destination="szZ-CE-ccy" kind="show" identifier="toBikeDetail" id="1mY-2Z-BWI"/>
                                 </connections>
                             </tableViewCell>
@@ -1469,7 +1532,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HxC-gg-MDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="130"/>
+            <point key="canvasLocation" x="905.79710144927549" y="129.61956521739131"/>
         </scene>
         <!--Item-->
         <scene sceneID="Erf-sd-iqz">

@@ -31,26 +31,6 @@ class DocumentDetailViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-    
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return bikes?.count ?? 0
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        guard let year = bikes?[row].year,
-//            let make = bikes?[row].make,
-//            let model = bikes?[row].model else { return nil }
-//        return "\(year) \(make) \(model)"
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        bikeChosen = bikes?[row].uid
-//    }
 
     
     @IBAction func selectDocumentationTapped(_ sender: Any) {
@@ -64,7 +44,7 @@ class DocumentDetailViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = documentNameTextfield.text,
             let imageData = imageData,
-            let bikeChosen = bikeChosen else { return }
+            let bikeChosen = bikes?.uid else { return }
         DocumentController.shared.addImage(data: imageData, name: name, bike: bikeChosen)
     }
     

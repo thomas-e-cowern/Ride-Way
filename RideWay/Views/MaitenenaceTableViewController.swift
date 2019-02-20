@@ -44,7 +44,8 @@ class MaitenenaceTableViewController: UITableViewController {
     }
     
     func getMaintenanceList () {
-        MaintenanceController.shared.fetchMaintenanceRecords { (maintenence) in
+        guard let bikeId = bikeInfo?.uid else { return }
+        MaintenanceController.shared.fetchMaintenanceRecords(bike: bikeId) { (maintenence) in
             self.maintenanceRecords = maintenence
 //            print("👻 MR:\(self.maintenanceRecords)")
             self.tableView.reloadData()

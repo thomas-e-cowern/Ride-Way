@@ -49,12 +49,9 @@ class BikeListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bikeCell", for: indexPath)
-        guard let year = dataSource?[indexPath.row].year,
-            let make = dataSource?[indexPath.row].make,
-            let model = dataSource?[indexPath.row].model else { return UITableViewCell() }
-        let bike = "\(year) \(make) \(model)"
-        cell.textLabel?.text = bike
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bikeCell", for: indexPath) as! BikeListTableViewCell
+        let bike = dataSource?[indexPath.row]
+        cell.bike = bike
         return cell
     }
 

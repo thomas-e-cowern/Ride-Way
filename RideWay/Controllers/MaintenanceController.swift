@@ -20,8 +20,8 @@ class MaintenanceController {
         FirebaseController.shared.saveMaintenenaceRecord(for: maintenanceRecord, completion: completion)
     }
     
-    func fetchMaintenanceRecords(completion: @escaping ([Maintenance]?) -> Void) {
-        FirebaseController.shared.fetchMaintenenanceRecordsFor(completion: completion)
+    func fetchMaintenanceRecords(bike: String, completion: @escaping ([Maintenance]?) -> Void) {
+        FirebaseController.shared.fetchMaintenenanceRecordsFor(bike: bike, completion: completion)
     }
     
     func deleteMaintenance(record: Maintenance, completion: @escaping (Bool) -> Void) {

@@ -10,9 +10,11 @@ import Firebase
 
 class NewVehicleViewController: UIViewController {
     // MARK: - Outlets
+    @IBOutlet weak var addBikePictureButtonPressed: UIButton!
     @IBOutlet weak var vinTextfield: UITextField!
     @IBOutlet weak var vinButton: UIButton!
 //    @IBOutlet weak var vinTextField: UITextField!
+    @IBOutlet weak var addBikeImageView: UIImageView!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var makeTextField: UITextField!
     @IBOutlet weak var modelTextField: UITextField!
@@ -24,6 +26,7 @@ class NewVehicleViewController: UIViewController {
     // MARK: - Properties
     var vehicleInfo: [VehicleInfo] = []
     let bikeInfo: VehicleInfo? = nil
+    var imageData: Data?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -47,6 +50,15 @@ class NewVehicleViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    @IBAction func addBikePictureButtonPressed(_ sender: Any) {
+        print("Print Button Clicked")
+        CameraHandler.shared.showActionSheet(vc: self)
+        CameraHandler.shared.imagePickedBlock = { (image) in
+            self.addBikeImageView.image = image
+        }
+    }
+    
     @IBAction func getVinButtonTapped(_ sender: Any) {
         guard let userVin = vinTextfield.text else {
             print("Problem getting the user vin from the textField")
@@ -73,7 +85,8 @@ class NewVehicleViewController: UIViewController {
     }
     
     @IBAction func saveBikeTapped(_ sender: Any) {
-
+        
+        guard let imageData = (addBikeImageView.image)?.jpegData(compressionQuality: 0.5) else { return }
         guard let displacementCC = displacementCCTextField.text,
         let displacementCI = displacementCITextField.text,
         let make = makeTextField.text,
@@ -84,8 +97,8 @@ class NewVehicleViewController: UIViewController {
         let vin = vinTextfield.text else { return }
         let uid = ""
         
-        VehicleController.shared.createVehicleInfo(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin) { (vehicle) in
-            print("vehicle saved: \(vehicle)")
+        VehicleController.shared.saveVehicleInfo(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, image: imageData) { (vehicle) in
+            print("vehicle saved: \(String(describing: vehicle))")
         }
     }
 }

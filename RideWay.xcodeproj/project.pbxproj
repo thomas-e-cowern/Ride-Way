@@ -38,6 +38,7 @@
 		41B75C192214D8F4003D8134 /* Documentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B75C182214D8F4003D8134 /* Documentation.swift */; };
 		41C9F27022121B410059E479 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C9F26F22121B410059E479 /* FirebaseController.swift */; };
 		41D7CE7C221A511E00869B5A /* BikeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7CE7B221A511E00869B5A /* BikeDetailViewController.swift */; };
+		41E52123221C87B800F75B81 /* DocumentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E52122221C87B800F75B81 /* DocumentListTableViewCell.swift */; };
 		41F060DF220CAF1E009EF525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F060DE220CAF1E009EF525 /* AppDelegate.swift */; };
 		41F060E1220CAF1E009EF525 /* LogRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F060E0220CAF1E009EF525 /* LogRegViewController.swift */; };
 		41F060E4220CAF1E009EF525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41F060E2220CAF1E009EF525 /* Main.storyboard */; };
@@ -46,6 +47,8 @@
 		41F060F1220CB057009EF525 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41F060F0220CB057009EF525 /* GoogleService-Info.plist */; };
 		41F060F3220CDE0A009EF525 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F060F2220CDE0A009EF525 /* HomeViewController.swift */; };
 		41F060F7220D0BD6009EF525 /* NewVehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F060F6220D0BD6009EF525 /* NewVehicleViewController.swift */; };
+		41FA4160221CBC6C00BFA8E5 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA415F221CBC6C00BFA8E5 /* CameraHandler.swift */; };
+		41FA4162221CD3DE00BFA8E5 /* BikeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FA4161221CD3DE00BFA8E5 /* BikeListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +82,7 @@
 		41B75C182214D8F4003D8134 /* Documentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentation.swift; sourceTree = "<group>"; };
 		41C9F26F22121B410059E479 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		41D7CE7B221A511E00869B5A /* BikeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeDetailViewController.swift; sourceTree = "<group>"; };
+		41E52122221C87B800F75B81 /* DocumentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListTableViewCell.swift; sourceTree = "<group>"; };
 		41F060DB220CAF1E009EF525 /* RideWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RideWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F060DE220CAF1E009EF525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41F060E0220CAF1E009EF525 /* LogRegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRegViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 		41F060F0220CB057009EF525 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41F060F2220CDE0A009EF525 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		41F060F6220D0BD6009EF525 /* NewVehicleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewVehicleViewController.swift; sourceTree = "<group>"; };
+		41FA415F221CBC6C00BFA8E5 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
+		41FA4161221CD3DE00BFA8E5 /* BikeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeListTableViewCell.swift; sourceTree = "<group>"; };
 		8B09FC34A199458AED77E829 /* Pods_RideWay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RideWay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7DD55CA33C5E51551E8C6B5 /* Pods-RideWay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideWay.release.xcconfig"; path = "Target Support Files/Pods-RideWay/Pods-RideWay.release.xcconfig"; sourceTree = "<group>"; };
 		DC5D6046DA713B0B19F1B37C /* Pods-RideWay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RideWay.debug.xcconfig"; path = "Target Support Files/Pods-RideWay/Pods-RideWay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 		41B75C132214B4D1003D8134 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				41E52122221C87B800F75B81 /* DocumentListTableViewCell.swift */,
 				41611E472217174F003B73F4 /* DocumentDetailViewController.swift */,
 				41611E4522171730003B73F4 /* DocumentListTableViewController.swift */,
 				410ABBBD2216432C0058898B /* PartsDetailViewController.swift */,
@@ -149,6 +156,7 @@
 				41F060F6220D0BD6009EF525 /* NewVehicleViewController.swift */,
 				41D7CE7B221A511E00869B5A /* BikeDetailViewController.swift */,
 				417219602211F3D700B2F839 /* BikeListTableViewController.swift */,
+				41FA4161221CD3DE00BFA8E5 /* BikeListTableViewCell.swift */,
 				41F060F2220CDE0A009EF525 /* HomeViewController.swift */,
 				41F060E0220CAF1E009EF525 /* LogRegViewController.swift */,
 				414CC49C221BA4F700F5B69F /* LogInViewController.swift */,
@@ -181,6 +189,7 @@
 		41F060DD220CAF1E009EF525 /* RideWay */ = {
 			isa = PBXGroup;
 			children = (
+				41FA415F221CBC6C00BFA8E5 /* CameraHandler.swift */,
 				41B75C132214B4D1003D8134 /* Views */,
 				416BC7A2220DF750006E8C16 /* Controllers */,
 				416BC79F220DF360006E8C16 /* Models */,
@@ -351,12 +360,14 @@
 				41611E4A221720B5003B73F4 /* DocumentController.swift in Sources */,
 				4100D62222138BB400B88176 /* PreRideChecklist.swift in Sources */,
 				410ABBC02216434B0058898B /* PartsListTableViewController.swift in Sources */,
+				41E52123221C87B800F75B81 /* DocumentListTableViewCell.swift in Sources */,
 				41C9F27022121B410059E479 /* FirebaseController.swift in Sources */,
 				41B75C192214D8F4003D8134 /* Documentation.swift in Sources */,
 				4198BF7122160E3000176B35 /* RidesController.swift in Sources */,
 				416BC7A4220DF7BB006E8C16 /* VehicleController.swift in Sources */,
 				41611E482217174F003B73F4 /* DocumentDetailViewController.swift in Sources */,
 				41B75C172214D8D5003D8134 /* Parts.swift in Sources */,
+				41FA4162221CD3DE00BFA8E5 /* BikeListTableViewCell.swift in Sources */,
 				41A7F9B02215D606001F7B06 /* DateExtension.swift in Sources */,
 				414CC49F221BA50800F5B69F /* RegisterViewController.swift in Sources */,
 				414CC49D221BA4F700F5B69F /* LogInViewController.swift in Sources */,
@@ -378,6 +389,7 @@
 				41F060F3220CDE0A009EF525 /* HomeViewController.swift in Sources */,
 				410ABBBE2216432C0058898B /* PartsDetailViewController.swift in Sources */,
 				41D7CE7C221A511E00869B5A /* BikeDetailViewController.swift in Sources */,
+				41FA4160221CBC6C00BFA8E5 /* CameraHandler.swift in Sources */,
 				41808C1E221A37260095E815 /* ChecklistTableViewCell.swift in Sources */,
 				41B75C0E2214AAFE003D8134 /* ChecklistTableViewController.swift in Sources */,
 			);
@@ -536,7 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vetDevHouse.RideWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -555,7 +567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vetDevHouse.RideWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
