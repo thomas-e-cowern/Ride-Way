@@ -16,6 +16,7 @@ class BikeDetailViewController: UIViewController {
     @IBOutlet weak var bikeCCTextfield: UITextField!
     @IBOutlet weak var bikeStateTextfield: UITextField!
     @IBOutlet weak var bikeCITextfield: UITextField!
+    @IBOutlet weak var bikeDetailNavBar: UINavigationBar!
     
     var bikeInfo: VehicleInfo?
     
@@ -23,11 +24,12 @@ class BikeDetailViewController: UIViewController {
         super.viewDidLoad()
         let tabBar = tabBarController as? TabViewController
         bikeInfo = tabBar?.bikeInfo
+        setTabBarTitle()
         updateViews()
     }
     
     func updateViews () {
-        print(bikeInfo)
+
         bikeMakeTextfield.text = bikeInfo?.make
         bikeYearTestfield.text = bikeInfo?.year
         bikeModelTextfield.text = bikeInfo?.model
@@ -37,10 +39,13 @@ class BikeDetailViewController: UIViewController {
         bikeCITextfield.text = bikeInfo?.displacementCI
     }
     
-    
+    func setTabBarTitle () {
+        guard let year = bikeInfo?.year,
+            let make = bikeInfo?.make,
+            let model = bikeInfo?.model else { return }
+        bikeDetailNavBar.topItem?.title = "\(year) \(make) \(model)"
+    }
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPartsListTableview" {
             if let destinationViewController = segue.destination as? PartsListTableViewController {

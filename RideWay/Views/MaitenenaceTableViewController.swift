@@ -11,25 +11,23 @@ import UIKit
 class MaitenenaceTableViewController: UITableViewController {
     
     @IBOutlet weak var maintenanceNavBar: UINavigationBar!
+    @IBOutlet weak var maintenanceTabBar: UINavigationItem!
     
     var dataSource: VehicleInfo?
     var maintenanceRecords: [Maintenance]?
     var bikeInfo: VehicleInfo?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getVehicleList()
+        setTabBarTitle()
         getMaintenanceList()
         maintenanceNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
-        self.title = "Your bike here..."
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let tabBar = tabBarController as? TabViewController
         bikeInfo = tabBar?.bikeInfo
-        print("MLVC: \(bikeInfo?.uid)")
         getMaintenanceList()
         
     }
@@ -39,30 +37,27 @@ class MaitenenaceTableViewController: UITableViewController {
         getMaintenanceList()
     }
 
-//    func getVehicleList() {
-//        VehicleController.shared.fetchVehicles { (vehicles) in
-//            self.dataSource = vehicles
-//            self.tableView.reloadData()
-//        }
-//    }
+    func setTabBarTitle () {
+        guard let year = dataSource?.year,
+            let make = dataSource?.make,
+            let model = dataSource?.model else { return }
+        maintenanceNavBar.topItem?.title = "\(year) \(make) \(model)"
+    }
     
     func getMaintenanceList () {
         guard let bikeId = bikeInfo?.uid else { return }
         MaintenanceController.shared.fetchMaintenanceRecords(bike: bikeId) { (maintenence) in
             self.maintenanceRecords = maintenence
-//            print("👻 MR:\(self.maintenanceRecords)")
             self.tableView.reloadData()
         }
     }
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return maintenanceRecords?.count ?? 0
     }
 
@@ -75,16 +70,6 @@ class MaitenenaceTableViewController: UITableViewController {
         cell.textLabel?.text = maintenanceSummary
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -110,23 +95,6 @@ class MaitenenaceTableViewController: UITableViewController {
         } 
     }
  
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMaintenanceDetail" {

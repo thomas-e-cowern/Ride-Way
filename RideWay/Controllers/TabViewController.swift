@@ -14,11 +14,11 @@ class TabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("TVC: \(bikeInfo)")
+        print("TVC: \(String(describing: bikeInfo))")
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
@@ -28,5 +28,9 @@ class TabViewController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension TabViewController {
 
 }

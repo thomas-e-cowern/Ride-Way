@@ -15,6 +15,7 @@
 		410ABBBE2216432C0058898B /* PartsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410ABBBD2216432C0058898B /* PartsDetailViewController.swift */; };
 		410ABBC02216434B0058898B /* PartsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410ABBBF2216434B0058898B /* PartsListTableViewController.swift */; };
 		410ECD3D2213334D008C244A /* FirebaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410ECD3C2213334D008C244A /* FirebaseObject.swift */; };
+		4126DBCF221F1DE100179316 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126DBCE221F1DE100179316 /* CustomTabBar.swift */; };
 		414CC49D221BA4F700F5B69F /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414CC49C221BA4F700F5B69F /* LogInViewController.swift */; };
 		414CC49F221BA50800F5B69F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414CC49E221BA50800F5B69F /* RegisterViewController.swift */; };
 		414CC4A1221BBC0700F5B69F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414CC4A0221BBC0700F5B69F /* TabViewController.swift */; };
@@ -59,6 +60,7 @@
 		410ABBBD2216432C0058898B /* PartsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsDetailViewController.swift; sourceTree = "<group>"; };
 		410ABBBF2216434B0058898B /* PartsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsListTableViewController.swift; sourceTree = "<group>"; };
 		410ECD3C2213334D008C244A /* FirebaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseObject.swift; sourceTree = "<group>"; };
+		4126DBCE221F1DE100179316 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		414CC49C221BA4F700F5B69F /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		414CC49E221BA50800F5B69F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		414CC4A0221BBC0700F5B69F /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				41F060DE220CAF1E009EF525 /* AppDelegate.swift */,
 				41A7F9AF2215D606001F7B06 /* DateExtension.swift */,
 				41F060E2220CAF1E009EF525 /* Main.storyboard */,
+				4126DBCE221F1DE100179316 /* CustomTabBar.swift */,
 				41F060E5220CAF21009EF525 /* Assets.xcassets */,
 				41F060E7220CAF21009EF525 /* LaunchScreen.storyboard */,
 				41F060EA220CAF21009EF525 /* Info.plist */,
@@ -357,6 +360,7 @@
 			files = (
 				410ABBBC22163D9F0058898B /* PartsController.swift in Sources */,
 				4198BF732216112B00176B35 /* RideListTableViewController.swift in Sources */,
+				4126DBCF221F1DE100179316 /* CustomTabBar.swift in Sources */,
 				41611E4A221720B5003B73F4 /* DocumentController.swift in Sources */,
 				4100D62222138BB400B88176 /* PreRideChecklist.swift in Sources */,
 				410ABBC02216434B0058898B /* PartsListTableViewController.swift in Sources */,

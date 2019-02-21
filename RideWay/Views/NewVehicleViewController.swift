@@ -22,6 +22,7 @@ class NewVehicleViewController: UIViewController {
     @IBOutlet weak var displacementCCTextField: UITextField!
     @IBOutlet weak var plantStateTextField: UITextField!
     @IBOutlet weak var plantCityTextField: UITextField!
+    @IBOutlet weak var cancelButtonPressed: UIButton!
     
     // MARK: - Properties
     var vehicleInfo: [VehicleInfo] = []
@@ -82,6 +83,10 @@ class NewVehicleViewController: UIViewController {
                 self.plantCityTextField.text = vehicleInfo.plantCity
             }
         }
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveBikeTapped(_ sender: Any) {
