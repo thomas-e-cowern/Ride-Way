@@ -44,6 +44,10 @@ class MaitenenaceTableViewController: UITableViewController {
         maintenanceNavBar.topItem?.title = "\(year) \(make) \(model)"
     }
     
+    @IBAction func homeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func getMaintenanceList () {
         guard let bikeId = bikeInfo?.uid else { return }
         MaintenanceController.shared.fetchMaintenanceRecords(bike: bikeId) { (maintenence) in

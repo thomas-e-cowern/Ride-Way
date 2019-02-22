@@ -32,6 +32,8 @@ class NewVehicleViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         vinTextfield.layer.borderWidth = 1
         vinTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
         yearTextField.layer.borderWidth = 1
@@ -51,6 +53,19 @@ class NewVehicleViewController: UIViewController {
     }
     
     // MARK: - Methods
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
     
     @IBAction func addBikePictureButtonPressed(_ sender: Any) {
         print("Print Button Clicked")
@@ -91,7 +106,7 @@ class NewVehicleViewController: UIViewController {
     
     @IBAction func saveBikeTapped(_ sender: Any) {
         
-        guard let imageData = (addBikeImageView.image)?.jpegData(compressionQuality: 0.5) else { return }
+        guard let imageData = (addBikeImageView.image)?.jpegData(compressionQuality: 0.4) else { return }
         guard let displacementCC = displacementCCTextField.text,
         let displacementCI = displacementCITextField.text,
         let make = makeTextField.text,
@@ -107,3 +122,4 @@ class NewVehicleViewController: UIViewController {
         }
     }
 }
+

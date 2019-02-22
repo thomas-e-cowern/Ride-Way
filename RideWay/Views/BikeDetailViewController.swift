@@ -17,8 +17,10 @@ class BikeDetailViewController: UIViewController {
     @IBOutlet weak var bikeStateTextfield: UITextField!
     @IBOutlet weak var bikeCITextfield: UITextField!
     @IBOutlet weak var bikeDetailNavBar: UINavigationBar!
+    @IBOutlet weak var bikeImageVIew: UIImageView!
     
     var bikeInfo: VehicleInfo?
+    var bikeImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,14 @@ class BikeDetailViewController: UIViewController {
     }
     
     func updateViews () {
-
+        guard let url = bikeInfo?.bikePhotoUrlString else { return }
+        DocumentController.shared.loadImagages(url: url) { (image) in
+            print("Was an image returned?")
+            DispatchQueue.main.async {
+                self.bikeImageVIew.image = image
+            }
+        }
+        
         bikeMakeTextfield.text = bikeInfo?.make
         bikeYearTestfield.text = bikeInfo?.year
         bikeModelTextfield.text = bikeInfo?.model
@@ -45,6 +54,11 @@ class BikeDetailViewController: UIViewController {
             let model = bikeInfo?.model else { return }
         bikeDetailNavBar.topItem?.title = "\(year) \(make) \(model)"
     }
+    
+    @IBAction func homeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPartsListTableview" {

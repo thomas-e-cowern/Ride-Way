@@ -71,6 +71,9 @@ class RideListTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func homeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

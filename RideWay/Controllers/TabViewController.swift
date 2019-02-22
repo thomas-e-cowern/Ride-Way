@@ -11,6 +11,7 @@ import UIKit
 class TabViewController: UITabBarController {
     
     var bikeInfo: VehicleInfo?
+    var bikeImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()

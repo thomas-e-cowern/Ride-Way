@@ -12,7 +12,7 @@ import UIKit
 class CustomTabBar: UITabBar {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var size = super.sizeThatFits(size)
-        size.height = 90
+        size.height = 104
         return size
     }
 }

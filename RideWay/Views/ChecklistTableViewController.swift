@@ -20,6 +20,9 @@ class ChecklistTableViewController: UITableViewController {
         checklist = ["Fluids", "Brakes", "Battery", "Tire Pressure", "Foot Pegs", "Lights/Signals", "Mirrors", "Horn"]
     }
 
+    @IBAction func homeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
