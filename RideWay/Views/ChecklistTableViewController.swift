@@ -34,6 +34,10 @@ class ChecklistTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return checklist.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -78,16 +78,21 @@ class VehicleController {
                 print("There was something wrong with the data")
                 return
             }
-//            print("💜💜💜💜💜Data: \(data.debugDescription)💜💜💜💜💜")
+//            print("💜💜💜💜💜Data: \(data)💜💜💜💜💜")
             // initialize json decoder
 //            let jsonDecoder = JSONDecoder()
              // decode the json data returned and check for errors
             do {
                 let vehicleJson = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-                guard let thisVehicle = vehicleJson?["Results"] else { return }
-                let vehicleInfo = VehicleInfo.init(dictionary: thisVehicle as! [String : Any])
+                guard let unwrappedVehicle = vehicleJson?["Results"] else { return }
+                print("VJ: \(String(describing: unwrappedVehicle))")
+//                let thisVehicle = vehicleJson?[0] as! [String: Any]
+//                let thisVehicle = try JSONSerialization.jsonObject(with: unwrappedVehicle, options: []) as? [String : Any]
+////                guard let thisVehicle = vehicleJson?["Results"] else { return }
+//                print("💚💚💚💚💚Vehicle Info: \(thisVehicle)💚💚💚💚💚")
+//                let vehicleInfo = VehicleInfo(dictionary: thisVehicle)
                 // return the info for additional uses
-                print("💚💚💚💚💚Vehicle Info: \(thisVehicle)💚💚💚💚💚")
+                
                 completion(nil)
             } catch {
                 print("😡 👎 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)")
