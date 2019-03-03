@@ -62,6 +62,7 @@ class RideDetailViewController: UIViewController {
 
     // MARK: - Actions
     @IBAction func saveRideButtonTapped(_ sender: Any) {
+        print("Inside saved ride")
         let startDate = startDatePicker.date
         let endDate = endDatePicker.date
         guard let startMileage = Double(mileageStartTextfield.text!),

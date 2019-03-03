@@ -86,7 +86,8 @@ class VehicleController {
                 let vehicleJson = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
                 guard let unwrappedVehicle = vehicleJson?["Results"] else { return }
                 print("VJ: \(String(describing: unwrappedVehicle))")
-//                let thisVehicle = vehicleJson?[0] as! [String: Any]
+                let thisVehicle = unwrappedVehicle as? [String : String]
+                print("TV: \(String(describing: thisVehicle))")
 //                let thisVehicle = try JSONSerialization.jsonObject(with: unwrappedVehicle, options: []) as? [String : Any]
 ////                guard let thisVehicle = vehicleJson?["Results"] else { return }
 //                print("💚💚💚💚💚Vehicle Info: \(thisVehicle)💚💚💚💚💚")

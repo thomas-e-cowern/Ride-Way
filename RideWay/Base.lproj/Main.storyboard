@@ -1060,6 +1060,9 @@
                                                         <state key="normal" title="Save Ride Info">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="saveRideButtonTapped:" destination="0Lb-Kc-2WB" eventType="touchUpInside" id="mPb-wK-8UL"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -2224,7 +2227,7 @@
         <scene sceneID="Asu-ic-zHF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MhS-6f-Smx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="SERVICE LOG not active" selectedImage="RIDE LOG active" id="lRz-em-vPU">
+                    <tabBarItem key="tabBarItem" title="" image="RIDE LOG not active" selectedImage="RIDE LOG active" id="lRz-em-vPU">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-20"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -2257,6 +2260,7 @@
         <image name="PRE-RIDE CHECKLIST active" width="75" height="75"/>
         <image name="PRE-RIDE CHECKLIST not active" width="75" height="75"/>
         <image name="RIDE LOG active" width="75" height="75"/>
+        <image name="RIDE LOG not active" width="75" height="75"/>
         <image name="SERVICE LOG active" width="75" height="75"/>
         <image name="SERVICE LOG not active" width="75" height="75"/>
         <image name="Sharp Copy" width="24" height="24"/>

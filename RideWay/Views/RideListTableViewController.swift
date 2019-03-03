@@ -22,7 +22,7 @@ class RideListTableViewController: UITableViewController {
         rideNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
         let tabBar = tabBarController as? TabViewController
         bikeInfo = tabBar?.bikeInfo
-        print("RLVC: \(bikeInfo?.uid)")
+        print("RLVC: \(String(describing: bikeInfo?.uid))")
         getRidesList()
     }
     
@@ -32,6 +32,7 @@ class RideListTableViewController: UITableViewController {
     }
 
     func getRidesList () {
+        print("Inside getRidesList")
         guard let bikeId = bikeInfo?.uid else { return }
         RidesController.shared.fetchRides(bike: bikeId) { (returnedRides) in
             self.rides = returnedRides

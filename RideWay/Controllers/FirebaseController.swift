@@ -162,10 +162,12 @@ class FirebaseController {
     
     // DHS2J39bzQRouwryF4b2fomwjfr1
     func fetchRides(bike: String, completion: @escaping ([Rides]?) -> Void) {
+        print("Inside fetchRides FC")
         guard let userId = userId else { return }
         let collection = docRef.collection("rides")
-        let query = collection.whereField("userId", isEqualTo: userId).whereField("bikeId", isEqualTo: bike)
+        let query = collection.whereField("user", isEqualTo: userId).whereField("bikeId", isEqualTo: bike)
         query.getDocuments { (querySnapshot, error) in
+            print("inside getDocuments")
             if let error = error {print("😡 There was an error in \(#function) ; \(error) ; \(error.localizedDescription)"); completion([])}
             if let snapshot = querySnapshot {let data = snapshot.documents.compactMap { Rides(dictionary: $0.data()) }; completion(data)}
         }

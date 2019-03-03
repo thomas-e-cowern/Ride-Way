@@ -21,6 +21,7 @@ class RidesController {
     }
     
     func fetchRides(bike: String, completion: @escaping ([Rides]?) -> Void) {
+        print("inside fetchRides RC")
         FirebaseController.shared.fetchRides(bike: bike, completion: completion)
     }
     
