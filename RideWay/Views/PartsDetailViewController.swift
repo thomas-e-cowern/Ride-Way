@@ -10,6 +10,7 @@ import UIKit
 
 class PartsDetailViewController: UIViewController {
     
+    // Outlets
     @IBOutlet weak var partsBikeLabel: UILabel!
     @IBOutlet weak var partsNameTextbo: UITextField!
     @IBOutlet weak var partsNumberTextbox: UITextField!
@@ -17,18 +18,21 @@ class PartsDetailViewController: UIViewController {
     @IBOutlet weak var partsDescriptionTextbox: UITextField!
     @IBOutlet weak var partsCostTextbox: UITextField!
     
+    // Properties
     var bike: VehicleInfo?
     var part: Parts?
     var bikeChosen: String?
 
+    // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        partsBikePickerview.delegate = self
         updateBike()
         
     }
     
+    // Methods
     func updateBike () {
+        // Gets info passed in from partsListTableViewController and updates label text
         guard let year = bike?.year,
         let make = bike?.make,
             let model = bike?.model else { return }
@@ -36,28 +40,9 @@ class PartsDetailViewController: UIViewController {
         partsBikeLabel.text = "\(String(describing: year)) \(String(describing: make)) \(String(describing: model))"
     }
     
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return bikes?.count ?? 0
-//    }
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        guard let year = bikes?[row].year,
-//            let make = bikes?[row].make,
-//            let model = bikes?[row].model else { return nil }
-//        return "\(year) \(make) \(model)"
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        bikeChosen = bikes?[row].uid
-//    }
-    
+    // Actions
     @IBAction func partsSavedButtonTapped(_ sender: Any) {
+        // Gets user entered info and creates a new part and saves to database
         guard let bike = bikeChosen,
             let partName = partsNameTextbo.text,
             let partNumber = partsNumberTextbox.text,
