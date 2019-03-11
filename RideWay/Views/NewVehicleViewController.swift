@@ -11,8 +11,8 @@ import Firebase
 class NewVehicleViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var addBikePictureButtonPressed: UIButton!
-    @IBOutlet weak var vinTextfield: UITextField!
-    @IBOutlet weak var vinButton: UIButton!
+//    @IBOutlet weak var vinTextfield: UITextField!
+//    @IBOutlet weak var vinButton: UIButton!
 //    @IBOutlet weak var vinTextField: UITextField!
     @IBOutlet weak var addBikeImageView: UIImageView!
     @IBOutlet weak var yearTextField: UITextField!
@@ -34,8 +34,8 @@ class NewVehicleViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        vinTextfield.layer.borderWidth = 1
-        vinTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+//        vinTextfield.layer.borderWidth = 1
+//        vinTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
         yearTextField.layer.borderWidth = 1
         yearTextField.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
         makeTextField.layer.borderWidth = 1
@@ -76,28 +76,28 @@ class NewVehicleViewController: UIViewController {
     }
     
     @IBAction func getVinButtonTapped(_ sender: Any) {
-        guard let userVin = vinTextfield.text else {
-            print("Problem getting the user vin from the textField")
-            return
-        }
+//        guard let userVin = vinTextfield.text else {
+//            print("Problem getting the user vin from the textField")
+//            return
+//        }
     
-        VehicleController.shared.fetchVinResults(with: userVin) { (returnInfo) in
-            guard let vehicleInfo = returnInfo else {
-                print("Problem getting vehicleInfo in VehicleController")
-                return
-            }
-            print("🧿🧿🧿🧿🧿\(vehicleInfo)🧿🧿🧿🧿🧿")
-            DispatchQueue.main.async {
-                self.vinTextfield.text = vehicleInfo.vin
-                self.yearTextField.text = vehicleInfo.year
-                self.makeTextField.text = vehicleInfo.make
-                self.modelTextField.text = vehicleInfo.model
-                self.displacementCCTextField.text = vehicleInfo.displacementCC
-                self.displacementCITextField.text = vehicleInfo.displacementCI
-                self.plantStateTextField.text = vehicleInfo.plantState
-                self.plantCityTextField.text = vehicleInfo.plantCity
-            }
-        }
+//        VehicleController.shared.fetchVinResults(with: userVin) { (returnInfo) in
+//            guard let vehicleInfo = returnInfo else {
+//                print("Problem getting vehicleInfo in VehicleController")
+//                return
+//            }
+//            print("🧿🧿🧿🧿🧿\(vehicleInfo)🧿🧿🧿🧿🧿")
+//            DispatchQueue.main.async {
+////                self.vinTextfield.text = vehicleInfo.vin
+//                self.yearTextField.text = vehicleInfo.year
+//                self.makeTextField.text = vehicleInfo.make
+//                self.modelTextField.text = vehicleInfo.model
+//                self.displacementCCTextField.text = vehicleInfo.displacementCC
+//                self.displacementCITextField.text = vehicleInfo.displacementCI
+//                self.plantStateTextField.text = vehicleInfo.plantState
+//                self.plantCityTextField.text = vehicleInfo.plantCity
+//            }
+//        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -113,8 +113,8 @@ class NewVehicleViewController: UIViewController {
         let model = modelTextField.text,
         let year = yearTextField.text,
         let plantCity = plantCityTextField.text,
-        let plantState = plantStateTextField.text,
-        let vin = vinTextfield.text else { return }
+        let plantState = plantStateTextField.text else { return }
+        let vin = ""
         let uid = ""
         
         VehicleController.shared.saveVehicleInfo(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, image: imageData) { (vehicle) in
