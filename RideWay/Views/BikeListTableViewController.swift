@@ -20,8 +20,9 @@ class BikeListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarView?.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
         getVehicleList()
-        bikeNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        bikeNavBar.barTintColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,5 +93,11 @@ class BikeListTableViewController: UITableViewController {
                 }
             }
         }
+    }
+}
+
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
     }
 }

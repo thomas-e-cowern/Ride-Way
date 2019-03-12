@@ -31,7 +31,6 @@ class DocumentDetailViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-
     
     @IBAction func selectDocumentationTapped(_ sender: Any) {
        handleSelectedPhoto()

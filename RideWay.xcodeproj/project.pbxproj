@@ -134,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				414CC4A0221BBC0700F5B69F /* TabViewController.swift */,
-				41611E49221720B5003B73F4 /* DocumentController.swift */,
 				41B75C142214B5AD003D8134 /* MaintenanceController.swift */,
 				416BC7A3220DF7BB006E8C16 /* VehicleController.swift */,
 				4198BF7022160E3000176B35 /* RidesController.swift */,
@@ -157,6 +156,7 @@
 				41B75C112214B4BA003D8134 /* MaintenanceDetailViewController.swift */,
 				41B75C0F2214B464003D8134 /* MaitenenaceTableViewController.swift */,
 				41F060F6220D0BD6009EF525 /* NewVehicleViewController.swift */,
+				41611E49221720B5003B73F4 /* DocumentController.swift */,
 				41D7CE7B221A511E00869B5A /* BikeDetailViewController.swift */,
 				417219602211F3D700B2F839 /* BikeListTableViewController.swift */,
 				41FA4161221CD3DE00BFA8E5 /* BikeListTableViewCell.swift */,

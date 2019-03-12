@@ -28,6 +28,20 @@ class BikeDetailViewController: UIViewController {
         bikeInfo = tabBar?.bikeInfo
         setTabBarTitle()
         updateViews()
+        bikeMakeTextfield.layer.borderWidth = 1
+        bikeMakeTextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
+        bikeYearTestfield.layer.borderWidth = 1
+        bikeYearTestfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
+        bikeModelTextfield.layer.borderWidth = 1
+        bikeModelTextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
+        bikeCityTextfield.layer.borderWidth = 1
+        bikeCityTextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
+        bikeCCTextfield.layer.borderWidth = 1
+        bikeCCTextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
+        bikeStateTextfield.layer.borderWidth = 1
+        bikeStateTextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
+        bikeCITextfield.layer.borderWidth = 1
+        bikeCITextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
     }
     
     func updateViews () {

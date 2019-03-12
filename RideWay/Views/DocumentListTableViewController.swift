@@ -17,6 +17,7 @@ class DocumentListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTabBarTitle()
         getDocuments()
         documentNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
@@ -31,6 +32,12 @@ class DocumentListTableViewController: UITableViewController {
         }
     }
     
+    func setTabBarTitle () {
+        guard let year = motorcycle?.year,
+            let make = motorcycle?.make,
+            let model = motorcycle?.model else { return }
+        documentNavBar.topItem?.title = "\(year) \(make) \(model)"
+    }
     
     
     // MARK: - Table view data source

@@ -18,11 +18,19 @@ class PartsListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTabBarTitle()
         getVehicleList()
         getPartsList()
         partsNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
 
+    func setTabBarTitle () {
+        guard let year = motorcycle?.year,
+            let make = motorcycle?.make,
+            let model = motorcycle?.model else { return }
+        partsNavBar.topItem?.title = "\(year) \(make) \(model)"
+    }
+    
     func getVehicleList() {
         VehicleController.shared.fetchVehicles { (vehicles) in
             self.tableView.reloadData()
