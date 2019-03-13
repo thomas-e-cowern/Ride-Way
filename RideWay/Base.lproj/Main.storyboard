@@ -541,8 +541,8 @@
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="aKd-nC-F0f">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="barTintColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="barTintColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <items>
                                 <navigationItem id="2lK-aV-8id">
                                     <barButtonItem key="leftBarButtonItem" title="Item" image="home" id="t9u-YU-WpR">
@@ -690,7 +690,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOa-ZV-r9a">
                                                 <rect key="frame" x="60" y="519.33333333333337" width="294" height="45"/>
-                                                <color key="backgroundColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="xFv-MS-AFQ"/>
                                                 </constraints>
@@ -794,8 +794,8 @@
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="TNL-xi-l1V">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="barTintColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="barTintColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <items>
                                 <navigationItem title="Pre-ride Checklist" id="t8w-io-KqO">
                                     <barButtonItem key="leftBarButtonItem" title="Item" image="home" id="JMs-2e-jHx">
@@ -890,8 +890,8 @@
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="2zg-lX-1ms">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="barTintColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="barTintColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <items>
                                 <navigationItem title="Ride Tracking" id="MYt-F6-XIT">
                                     <barButtonItem key="leftBarButtonItem" title="Item" image="home" id="qms-Eg-5Vn">
@@ -1939,8 +1939,8 @@
                                             </imageView>
                                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWT-5h-NIX">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                <color key="backgroundColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="barTintColor" red="0.92454820869999998" green="0.36297017339999998" blue="0.18169230219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="barTintColor" red="0.95294117649999999" green="0.41960784309999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <items>
                                                     <navigationItem id="g4U-ea-ech">
                                                         <barButtonItem key="leftBarButtonItem" title="Item" image="home" id="x4F-wZ-idn">
