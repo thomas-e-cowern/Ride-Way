@@ -56,6 +56,10 @@ class DocumentListTableViewController: UITableViewController {
         return cell
      }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 166
+    }
+    
 //    func getPartsList () {
 //        DocumentController.shared.loadImagages(document: <#T##Documentation#>) { (docs) in
 //            self.documentList = docs

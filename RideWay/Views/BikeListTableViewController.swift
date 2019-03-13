@@ -20,6 +20,7 @@ class BikeListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Database.database().isPersistenceEnabled = true
         UIApplication.shared.statusBarView?.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
         getVehicleList()
         bikeNavBar.barTintColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
