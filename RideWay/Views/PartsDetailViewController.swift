@@ -26,6 +26,8 @@ class PartsDetailViewController: UIViewController {
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         // updating colored borders, dealing with keyboard, and updating bike info
         partsNameTextbo.layer.borderWidth = 1
         partsNameTextbo.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
@@ -37,8 +39,6 @@ class PartsDetailViewController: UIViewController {
         partsDescriptionTextbox.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
         partsCostTextbox.layer.borderWidth = 1
         partsCostTextbox.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         updateBike()
     }
     
@@ -57,6 +57,10 @@ class PartsDetailViewController: UIViewController {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        self.resignFirstResponder()
     }
     
     func updateBike () {

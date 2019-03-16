@@ -24,6 +24,8 @@ class BikeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tabBar = tabBarController as? TabViewController
         bikeInfo = tabBar?.bikeInfo
         setTabBarTitle()
@@ -42,6 +44,20 @@ class BikeDetailViewController: UIViewController {
         bikeStateTextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
         bikeCITextfield.layer.borderWidth = 1
         bikeCITextfield.layer.borderColor = #colorLiteral(red: 0.9529411765, green: 0.4196078431, blue: 0.1294117647, alpha: 1)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func updateViews () {
