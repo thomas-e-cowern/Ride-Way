@@ -21,6 +21,10 @@ class MaintenanceDetailViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         maintenanceLocationTextfield.layer.borderWidth = 1
         maintenanceLocationTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
         maintenanceMilesTextfield.layer.borderWidth = 1
@@ -33,6 +37,26 @@ class MaintenanceDetailViewController: UIViewController {
         bikeLabel.text = "\(year) \(make) \(model)"
     }
    
+    @objc func dismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        // Sets up responsive keyboard
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height - 104
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        // Hides responsive keyboard
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
     @IBAction func maintenanceSaveButtonPressed(_ sender: Any) {
         let date = maintenanceDatePicker.date
         guard let location = maintenanceLocationTextfield.text,

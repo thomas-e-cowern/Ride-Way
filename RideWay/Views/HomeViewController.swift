@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad email: \(email)")
+        print("viewDidLoad email: \(String(describing: email))")
     }
     
     override func viewWillAppear(_ animated: Bool) {

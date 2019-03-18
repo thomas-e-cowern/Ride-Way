@@ -116,7 +116,6 @@ class NewVehicleViewController: UIViewController {
         let plantCity = plantCityTextField.text,
         let plantState = plantStateTextField.text else { return }
         let vin = ""
-        let uid = ""
         
         VehicleController.shared.saveVehicleInfo(displacementCC: displacementCC, displacementCI: displacementCI, make: make, model: model, year: year, plantCity: plantCity, plantState: plantState, vin: vin, image: imageData) { (vehicle) in
             print("vehicle saved: \(String(describing: vehicle))")

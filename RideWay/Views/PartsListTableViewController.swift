@@ -23,6 +23,11 @@ class PartsListTableViewController: UITableViewController {
         getPartsList()
         partsNavBar.barTintColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getPartsList()
+    }
 
     func setTabBarTitle () {
         guard let year = motorcycle?.year,

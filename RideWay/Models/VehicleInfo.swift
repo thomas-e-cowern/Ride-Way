@@ -35,7 +35,7 @@ class VehicleInfo: FirebaseObject {
             VehicleInfoConstants.plantState: plantState,
             VehicleInfoConstants.uid: uid,
             VehicleInfoConstants.userId: userId,
-            VehicleInfoConstants.bikePhotoUrlString: bikePhotoUrlString
+            VehicleInfoConstants.bikePhotoUrlString: bikePhotoUrlString as Any
         ]
     }
     

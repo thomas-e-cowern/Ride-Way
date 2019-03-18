@@ -26,6 +26,8 @@ class PartsDetailViewController: UIViewController {
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         // updating colored borders, dealing with keyboard, and updating bike info
@@ -43,11 +45,15 @@ class PartsDetailViewController: UIViewController {
     }
     
     // Methods
+    @objc func dismissKeyboard () {
+        view.endEditing(true)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         // Sets up responsive keyboard
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+                self.view.frame.origin.y -= keyboardSize.height - 104
             }
         }
     }
@@ -83,7 +89,7 @@ class PartsDetailViewController: UIViewController {
             let cost = Double(partsCostTextbox.text!) else { return }
         
         PartsController.shared.saveNewPart(name: partName, number: partNumber, serialNumber: serialNumber, description: description, cost: cost, bikeId: bike) { (part) in
-            
         }
+        dismiss(animated: true, completion: nil)
     }
 }

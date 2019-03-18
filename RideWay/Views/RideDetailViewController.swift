@@ -27,6 +27,8 @@ class RideDetailViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         mileageStartTextfield.layer.borderWidth = 1
         mileageStartTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
         mileageEndTextfield.layer.borderWidth = 1
@@ -43,13 +45,17 @@ class RideDetailViewController: UIViewController {
     }
     
     func updateBikeInfo() {
-        print(bikeInfo?.uid)
+        print(bikeInfo?.uid as Any)
+    }
+    
+    @objc func dismissKeyboard () {
+        view.endEditing(true)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+                self.view.frame.origin.y -= keyboardSize.height - 48
             }
         }
     }

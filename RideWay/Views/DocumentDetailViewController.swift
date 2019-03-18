@@ -15,6 +15,7 @@ class DocumentDetailViewController: UIViewController {
     @IBOutlet weak var documentPhotoButton: UIButton!
     @IBOutlet weak var documentImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var bikeLabel: UILabel!
     
     var bikes: VehicleInfo?
     var bikeChosen: String?
@@ -22,11 +23,15 @@ class DocumentDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         print("Bike ID: \(String(describing: bikes?.uid))")
         bikeChosen = bikes?.uid
-//        documentNameTextfield.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        documentNameTextfield.layer.borderWidth = 1
+        documentNameTextfield.layer.borderColor = #colorLiteral(red: 0.9245482087, green: 0.3629701734, blue: 0.1816923022, alpha: 1)
+        updateBike()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -43,10 +48,18 @@ class DocumentDetailViewController: UIViewController {
         }
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.view.endEditing(true)
-//        return false
-//    }
+    @objc func dismissKeyboard () {
+        view.endEditing(true)
+    }
+    
+    func updateBike () {
+        // Gets info passed in from partsListTableViewController and updates label text
+        guard let year = bikes?.year,
+            let make = bikes?.make,
+            let model = bikes?.model else { return }
+        bikeChosen = bikes?.uid
+        bikeLabel.text = "\(String(describing: year)) \(String(describing: make)) \(String(describing: model))"
+    }
     
     @IBAction func takeAPhotoButtonTapped(_ sender: Any) {
         CameraHandler.shared.showActionSheet(vc: self)
